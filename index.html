@@ -81,8 +81,24 @@ button{font:inherit}
   margin:auto;
   font-size:18px;line-height:1.55;
 }
-.hero-note strong{display:block;font-weight:500;font-size:21px;margin-bottom:5px}
 
+.hero-note strong{display:block;font-weight:500;font-size:21px;margin-bottom:5px}
+/* Keep hero words aligned on mobile */
+@media (max-width: 720px) {
+  .hero-title {
+    font-size: clamp(48px, 15.8vw, 76px) !important;
+    line-height: 0.86;
+    width: 100%;
+    max-width: 100%;
+    letter-spacing: -0.045em;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-title {
+    font-size: 15.5vw !important;
+  }
+}
 .client-strip{padding:26px 0 30px}
 .client-strip .eyebrow{margin-bottom:25px}
 
