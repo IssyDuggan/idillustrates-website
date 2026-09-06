@@ -837,6 +837,201 @@ body.lightbox-open{overflow:hidden}
     font-size: 15.5vw !important;
   }
 }
+/* GLITCHY PRINT. */
+.print-glitch {
+  position: relative;
+  display: inline-block;
+  animation: printGlitch 1.7s steps(1, end) infinite;
+}
+
+/* misregistered second ink impression */
+.print-glitch::before {
+  content: "PRINT.";
+  position: absolute;
+  inset: 0;
+  color: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  animation: printGhost 1.7s steps(1, end) infinite;
+}
+
+/* little ink drag underneath */
+.print-glitch::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: .03em;
+  width: 100%;
+  height: .035em;
+  background: currentColor;
+  opacity: 0;
+  transform-origin: left center;
+  animation: inkSkip 1.7s steps(1, end) infinite;
+}
+
+@keyframes printGlitch {
+
+  0%, 5% {
+    transform: none;
+    opacity: 1;
+  }
+
+  6% {
+    transform: translate(-.035em, .008em) skewX(-1.5deg);
+    opacity: .78;
+  }
+
+  7% {
+    transform: translate(.026em, -.006em);
+    opacity: 1;
+  }
+
+  8% {
+    transform: translate(-.012em, .003em);
+    opacity: .9;
+  }
+
+  9%, 29% {
+    transform: none;
+    opacity: 1;
+  }
+
+  30% {
+    transform: translate(.02em, 0) scaleX(1.012);
+    opacity: .7;
+  }
+
+  31% {
+    transform: translate(-.024em, .004em);
+    opacity: 1;
+  }
+
+  32%, 53% {
+    transform: none;
+    opacity: 1;
+  }
+
+  54% {
+    transform: translate(-.028em, .002em);
+    opacity: .76;
+  }
+
+  55% {
+    transform: translate(.018em, -.002em);
+    opacity: 1;
+  }
+
+  56%, 74% {
+    transform: none;
+    opacity: 1;
+  }
+
+  75% {
+    transform: translate(.03em, .006em) skewX(1.2deg);
+    opacity: .72;
+  }
+
+  76% {
+    transform: translate(-.018em, -.004em);
+    opacity: 1;
+  }
+
+  77%, 100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes printGhost {
+
+  0%, 5% {
+    opacity: 0;
+  }
+
+  6% {
+    opacity: .34;
+    transform: translate(.055em, .018em);
+  }
+
+  7% {
+    opacity: .15;
+    transform: translate(-.038em, -.006em);
+  }
+
+  8%, 29% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: .28;
+    transform: translate(-.045em, .012em);
+  }
+
+  31%, 53% {
+    opacity: 0;
+  }
+
+  54% {
+    opacity: .24;
+    transform: translate(.042em, .008em);
+  }
+
+  55%, 74% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: .30;
+    transform: translate(-.05em, .014em);
+  }
+
+  76%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes inkSkip {
+
+  0%, 5% {
+    opacity: 0;
+  }
+
+  6% {
+    opacity: .24;
+    transform: translateX(-.03em) scaleX(.82);
+  }
+
+  7%, 29% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: .18;
+    transform: translateX(.02em) scaleX(1.03);
+  }
+
+  31%, 53% {
+    opacity: 0;
+  }
+
+  54% {
+    opacity: .20;
+    transform: translateX(-.04em) scaleX(.92);
+  }
+
+  55%, 74% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: .22;
+    transform: translateX(.01em) scaleX(.96);
+  }
+
+  76%, 100% {
+    opacity: 0;
+  }
+}
 </style>
 </head>
 <body>
@@ -856,7 +1051,7 @@ body.lightbox-open{overflow:hidden}
 <section class="wrap hero-copy">
 <h1 class="hero-title reveal">
 <span>ART.</span>
-<span>PRINT.</span>
+<span class="print-glitch">PRINT.</span><br>
 <span>EXPERIENCE.</span>
 </h1>
 <div class="hero-side reveal">
