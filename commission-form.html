@@ -67,6 +67,23 @@ form{padding:30px 0 100px}.field{display:grid;grid-template-columns:minmax(180px
 .form-guide-image{border:1px solid rgba(17,17,17,.18)!important;box-shadow:0 7px 20px rgba(17,17,17,.08)}
 @media(max-width:720px){:root{--pad:20px}.site-header{padding:14px var(--pad)}input,textarea,select{font-size:16px!important}.form-guide-image{box-shadow:0 5px 16px rgba(17,17,17,.09)}.button,button[type="submit"]{min-height:46px}}
 @media(max-width:420px){:root{--pad:16px}}
+
+/* Keep hero words aligned on mobile */
+@media (max-width: 720px) {
+  .hero-title {
+    font-size: clamp(48px, 15.8vw, 76px) !important;
+    line-height: 0.86;
+    width: 100%;
+    max-width: 100%;
+    letter-spacing: -0.045em;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-title {
+    font-size: 15.5vw !important;
+  }
+}
 </style>
 </head>
 <body>
