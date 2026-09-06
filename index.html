@@ -1046,32 +1046,39 @@ body.lightbox-open{overflow:hidden}
   width:100%;
   height:auto;
   object-fit:contain;
-  transition:opacity .18s ease;
+  transition:none;
 }
 
 .project-thumbnails{
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:8px;
-  margin-top:9px;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:10px;
+  margin-top:10px;
 }
 
 .project-thumbnail{
   appearance:none;
   -webkit-appearance:none;
+  display:block;
   width:100%;
   aspect-ratio:4/3;
   padding:0;
   margin:0;
-  border:1px solid rgba(17,17,17,.14);
+  border:2px solid transparent;
   background:#f5f4f2;
   overflow:hidden;
   cursor:pointer;
-  opacity:.68;
-  transition:opacity .18s ease,border-color .18s ease;
+  opacity:.72;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  transition:opacity .12s ease,border-color .12s ease,transform .12s ease;
 }
 
-.project-thumbnail:hover,
+.project-thumbnail:hover{
+  opacity:1;
+  transform:translateY(-1px);
+}
+
 .project-thumbnail.is-active{
   opacity:1;
   border-color:var(--ink);
@@ -1083,6 +1090,7 @@ body.lightbox-open{overflow:hidden}
   object-fit:cover !important;
   padding:0 !important;
   background:#f5f4f2 !important;
+  pointer-events:none;
 }
 
 .project-thumbnail[hidden]{
@@ -1091,9 +1099,126 @@ body.lightbox-open{overflow:hidden}
 
 @media(max-width:720px){
   .project-thumbnails{
-    gap:6px;
-    margin-top:7px;
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding-bottom:3px;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
   }
+
+  .project-thumbnails::-webkit-scrollbar{
+    display:none;
+  }
+
+  .project-thumbnail{
+    flex:0 0 88px;
+    width:88px;
+    min-width:88px;
+  }
+}
+
+
+
+/* SUBTLE STAMP-STYLE WATERMARKS — COMMISSION ARTWORK + ENLARGED LIGHTBOX */
+#commissions .feature-img,
+#commissions .commission-watermark-frame{
+  position:relative;
+  overflow:hidden;
+}
+
+/* The stamp is intentionally soft and slightly imperfect. */
+#commissions .feature-img::after,
+#commissions .commission-watermark-frame::after,
+.commission-lightbox::after{
+  content:"ID ILLUSTRATES";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotate(-12deg);
+  z-index:6;
+
+  display:inline-block;
+  padding:0;
+  border:0;
+  border-radius:0;
+
+  color:rgba(17,17,17,.24);
+  font-family:var(--sans);
+  font-size:clamp(12px,1.45vw,22px);
+  font-weight:600;
+  line-height:1;
+  letter-spacing:.16em;
+  white-space:nowrap;
+
+  opacity:.78;
+  filter:blur(.08px);
+  text-shadow:
+    .4px .2px 0 rgba(17,17,17,.08),
+    -.3px -.2px 0 rgba(17,17,17,.05);
+
+  pointer-events:none;
+  user-select:none;
+  -webkit-user-select:none;
+
+  /* very slight worn-ink feel without obscuring the artwork */
+  -webkit-mask-image:
+    repeating-linear-gradient(
+      8deg,
+      rgba(0,0,0,.98) 0 4px,
+      rgba(0,0,0,.82) 4px 5px,
+      rgba(0,0,0,.96) 5px 9px
+    );
+  mask-image:
+    repeating-linear-gradient(
+      8deg,
+      rgba(0,0,0,.98) 0 4px,
+      rgba(0,0,0,.82) 4px 5px,
+      rgba(0,0,0,.96) 5px 9px
+    );
+}
+
+#commissions .feature-img img,
+#commissions .commission-watermark-frame img{
+  position:relative;
+  z-index:1;
+}
+
+/* Enlarged commission image watermark.
+   Uses a light stamp so it stays visible over the dark lightbox backdrop/image edge. */
+.commission-lightbox::after{
+  position:fixed;
+  top:50%;
+  left:50%;
+  z-index:10001;
+  color:rgba(255,255,255,.42);
+  font-size:clamp(13px,2vw,24px);
+  opacity:0;
+  transition:opacity .16s ease;
+}
+
+.commission-lightbox.is-open::after{
+  opacity:.72;
+}
+
+/* Keep the close button above the watermark. */
+.commission-lightbox__close{
+  z-index:10002;
+}
+
+
+/* Remove divider line beneath client logos */
+.client-strip,
+.client-marquee,
+.client-row{
+  border-bottom:0 !important;
+}
+
+
+/* Remove black divider before Brand Collaborations */
+#commercial,
+.commercial-section{
+  border-top:0 !important;
 }
 
 </style>
@@ -1211,10 +1336,11 @@ body.lightbox-open{overflow:hidden}
     <img data-project-main alt="Allpress Espresso biscuit packaging illustrated by ID Illustrates" loading="lazy" src="assets/images/commission-allpress.png"/>
   </div>
   <div class="project-thumbnails" aria-label="More Allpress Espresso packaging images">
-    <button class="project-thumbnail" type="button"><img src="assets/images/allpress-packaging-1.jpg" alt="Allpress Espresso packaging detail 1" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
-    <button class="project-thumbnail" type="button"><img src="assets/images/allpress-packaging-2.jpg" alt="Allpress Espresso packaging detail 2" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
-    <button class="project-thumbnail" type="button"><img src="assets/images/allpress-packaging-3.jpg" alt="Allpress Espresso packaging detail 3" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
-    <button class="project-thumbnail" type="button"><img src="assets/images/allpress-packaging-4.jpg" alt="Allpress Espresso packaging detail 4" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail is-active" type="button" data-src="assets/images/commission-allpress.png" data-alt="Allpress Espresso biscuit packaging illustrated by ID Illustrates" aria-label="Show original Allpress Espresso packaging image"><img src="assets/images/commission-allpress.png" alt="Allpress Espresso biscuit packaging illustrated by ID Illustrates" loading="lazy"></button>
+    <button class="project-thumbnail" type="button" data-src="assets/images/allpress-packaging-1.jpg" data-alt="Allpress Espresso packaging detail 1"><img src="assets/images/allpress-packaging-1.jpg" alt="Allpress Espresso packaging detail 1" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button" data-src="assets/images/allpress-packaging-2.jpg" data-alt="Allpress Espresso packaging detail 2"><img src="assets/images/allpress-packaging-2.jpg" alt="Allpress Espresso packaging detail 2" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button" data-src="assets/images/allpress-packaging-3.jpg" data-alt="Allpress Espresso packaging detail 3"><img src="assets/images/allpress-packaging-3.jpg" alt="Allpress Espresso packaging detail 3" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button" data-src="assets/images/allpress-packaging-4.jpg" data-alt="Allpress Espresso packaging detail 4"><img src="assets/images/allpress-packaging-4.jpg" alt="Allpress Espresso packaging detail 4" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
   </div>
 </div>
 <div class="eyebrow">Packaging / Illustration</div>
@@ -1227,10 +1353,11 @@ body.lightbox-open{overflow:hidden}
     <img data-project-main alt="Koncept Coffee bespoke illustration by ID Illustrates" loading="lazy" src="assets/images/commission-koncept.png"/>
   </div>
   <div class="project-thumbnails" aria-label="More Koncept Coffee merchandise images">
-    <button class="project-thumbnail" type="button"><img src="assets/images/koncept-merch-1.jpg" alt="Koncept Coffee merchandise detail 1" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
-    <button class="project-thumbnail" type="button"><img src="assets/images/koncept-merch-2.jpg" alt="Koncept Coffee merchandise detail 2" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
-    <button class="project-thumbnail" type="button"><img src="assets/images/koncept-merch-3.jpg" alt="Koncept Coffee merchandise detail 3" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
-    <button class="project-thumbnail" type="button"><img src="assets/images/koncept-merch-4.jpg" alt="Koncept Coffee merchandise detail 4" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail is-active" type="button" data-src="assets/images/commission-koncept.png" data-alt="Koncept Coffee bespoke illustration by ID Illustrates" aria-label="Show original Koncept Coffee merchandise image"><img src="assets/images/commission-koncept.png" alt="Koncept Coffee bespoke illustration by ID Illustrates" loading="lazy"></button>
+    <button class="project-thumbnail" type="button" data-src="assets/images/koncept-merch-1.jpg" data-alt="Koncept Coffee merchandise detail 1"><img src="assets/images/koncept-merch-1.jpg" alt="Koncept Coffee merchandise detail 1" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button" data-src="assets/images/koncept-merch-2.jpg" data-alt="Koncept Coffee merchandise detail 2"><img src="assets/images/koncept-merch-2.jpg" alt="Koncept Coffee merchandise detail 2" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button" data-src="assets/images/koncept-merch-3.jpg" data-alt="Koncept Coffee merchandise detail 3"><img src="assets/images/koncept-merch-3.jpg" alt="Koncept Coffee merchandise detail 3" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button" data-src="assets/images/koncept-merch-4.jpg" data-alt="Koncept Coffee merchandise detail 4"><img src="assets/images/koncept-merch-4.jpg" alt="Koncept Coffee merchandise detail 4" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
   </div>
 </div>
 <div class="eyebrow">Merchandise / Live print</div>
@@ -1286,7 +1413,7 @@ body.lightbox-open{overflow:hidden}
 <div class="carousel-viewport">
 <div class="carousel" id="commissionCarousel">
 <article class="slide">
-<img alt="Updated A4 house portrait commissioned by Shanae as a moving-house keepsake gift" src="assets/images/commission-shanae-a4.png"/>
+<div class="commission-watermark-frame"><img alt="Updated A4 house portrait commissioned by Shanae as a moving-house keepsake gift" src="assets/images/commission-shanae-a4.png"/></div>
 <div class="slide-copy">
 <div class="eyebrow">Commission / A4 house portrait</div>
 <h4>Ellie’s Parents</h4>
@@ -1294,7 +1421,7 @@ body.lightbox-open{overflow:hidden}
 </div>
 </article>
 <article class="slide">
-<img alt="Updated A5 house portrait commissioned as a wedding present celebrating a couple’s first home together" src="assets/images/commission-hannah-a5.png"/>
+<div class="commission-watermark-frame"><img alt="Updated A5 house portrait commissioned as a wedding present celebrating a couple’s first home together" src="assets/images/commission-hannah-a5.png"/></div>
 <div class="slide-copy">
 <div class="eyebrow">Commission / A5 wedding gift</div>
 <h4>Rebecca &amp; Oli </h4>
@@ -1302,7 +1429,7 @@ body.lightbox-open{overflow:hidden}
 </div>
 </article>
 <article class="slide">
-<img alt="Emil and Farida bespoke leaving gift illustration" src="assets/images/commission-emil.png"/>
+<div class="commission-watermark-frame"><img alt="Emil and Farida bespoke leaving gift illustration" src="assets/images/commission-emil.png"/></div>
 <div class="slide-copy">
 <div class="eyebrow">Commission / A4 Leaving gift</div>
 <h4>Emil &amp; Farida</h4>
@@ -1310,7 +1437,7 @@ body.lightbox-open{overflow:hidden}
 </div>
 </article>
 <article class="slide">
-<img alt="Anniversary gift illustration" src="assets/images/commission-jon.png"/>
+<div class="commission-watermark-frame"><img alt="Anniversary gift illustration" src="assets/images/commission-jon.png"/></div>
 <div class="slide-copy">
 <div class="eyebrow">Commission / A4 Anniversary</div>
 <h4>Jon's parents</h4>
@@ -1318,7 +1445,7 @@ body.lightbox-open{overflow:hidden}
 </div>
 </article>
 <article class="slide">
-<img alt="Amy and Tom house commission" src="assets/images/commission-amy-tom.png"/>
+<div class="commission-watermark-frame"><img alt="Amy and Tom house commission" src="assets/images/commission-amy-tom.png"/></div>
 <div class="slide-copy">
 <div class="eyebrow">Commission / A4 Christmas gift</div>
 <h4>Amy &amp; Tom</h4>
@@ -1738,26 +1865,37 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 <script>
-/* Allpress + Koncept thumbnail galleries */
+/* Allpress + Koncept thumbnail galleries — fast mouse + touch switching */
 document.querySelectorAll('[data-project-gallery]').forEach(gallery => {
   const main = gallery.querySelector('[data-project-main]');
-  const thumbs = gallery.querySelectorAll('.project-thumbnail');
+  const thumbs = [...gallery.querySelectorAll('.project-thumbnail')];
+
+  const switchImage = (thumb) => {
+    if (!thumb || thumb.hidden) return;
+
+    const src = thumb.dataset.src || thumb.querySelector('img')?.src;
+    const alt = thumb.dataset.alt || thumb.querySelector('img')?.alt || main.alt;
+    if (!src) return;
+
+    main.src = src;
+    main.alt = alt;
+
+    thumbs.forEach(item => {
+      item.classList.toggle('is-active', item === thumb);
+      item.setAttribute('aria-pressed', item === thumb ? 'true' : 'false');
+    });
+  };
 
   thumbs.forEach(thumb => {
-    thumb.addEventListener('click', () => {
-      const image = thumb.querySelector('img');
-      if (!image || !image.naturalWidth) return;
+    thumb.setAttribute('aria-pressed', thumb.classList.contains('is-active') ? 'true' : 'false');
 
-      main.style.opacity = '0';
+    thumb.addEventListener('click', () => switchImage(thumb));
 
-      setTimeout(() => {
-        main.src = image.currentSrc || image.src;
-        main.alt = image.alt;
-        main.style.opacity = '1';
-      }, 120);
-
-      thumbs.forEach(item => item.classList.remove('is-active'));
-      thumb.classList.add('is-active');
+    thumb.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        switchImage(thumb);
+      }
     });
   });
 });
