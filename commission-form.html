@@ -84,6 +84,34 @@ form{padding:30px 0 100px}.field{display:grid;grid-template-columns:minmax(180px
     font-size: 15.5vw !important;
   }
 }
+.menu-btn {
+  cursor: pointer;
+  position: relative;
+  z-index: 100;
+}
+
+@media (max-width: 760px) {
+
+  .site-header {
+    flex-wrap: wrap;
+  }
+
+  .nav {
+    display: none;
+    width: 100%;
+    order: 3;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px 0 8px;
+    margin-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+
+  .site-header.menu-open .nav {
+    display: flex;
+  }
+}
 </style>
 </head>
 <body>
@@ -178,6 +206,36 @@ if(params.get('sent')==='1'){
   msg.textContent='Thank you — your illustration request has been sent. I’ll be in touch soon.';
   hero.appendChild(msg);
   history.replaceState({},document.title,'commission-form.html');
+}
+</script>
+
+<script>
+const menuButton = document.querySelector('.menu-btn');
+const header = document.querySelector('.site-header');
+
+if (menuButton && header) {
+
+  menuButton.addEventListener('click', () => {
+
+    const isOpen = header.classList.toggle('menu-open');
+
+    menuButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    menuButton.textContent = isOpen ? 'Close' : 'Menu';
+
+  });
+
+  document.querySelectorAll('.nav a').forEach(link => {
+
+    link.addEventListener('click', () => {
+
+      header.classList.remove('menu-open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.textContent = 'Menu';
+
+    });
+
+  });
+
 }
 </script>
 </body></html>
