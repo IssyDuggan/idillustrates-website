@@ -1030,6 +1030,72 @@ body.lightbox-open{overflow:hidden}
     opacity: 0;
   }
 }
+
+/* ALLPRESS + KONCEPT MERCH / PACKAGING THUMBNAILS */
+.project-image.has-thumbnails{
+  overflow:visible !important;
+  background:transparent !important;
+}
+
+.project-gallery-main{
+  overflow:hidden;
+  background:var(--soft);
+}
+
+.project-gallery-main img{
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  transition:opacity .18s ease;
+}
+
+.project-thumbnails{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+  margin-top:9px;
+}
+
+.project-thumbnail{
+  appearance:none;
+  -webkit-appearance:none;
+  width:100%;
+  aspect-ratio:4/3;
+  padding:0;
+  margin:0;
+  border:1px solid rgba(17,17,17,.14);
+  background:#f5f4f2;
+  overflow:hidden;
+  cursor:pointer;
+  opacity:.68;
+  transition:opacity .18s ease,border-color .18s ease;
+}
+
+.project-thumbnail:hover,
+.project-thumbnail.is-active{
+  opacity:1;
+  border-color:var(--ink);
+}
+
+.project-thumbnail img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  padding:0 !important;
+  background:#f5f4f2 !important;
+}
+
+.project-thumbnail[hidden]{
+  display:none !important;
+}
+
+@media(max-width:720px){
+  .project-thumbnails{
+    gap:6px;
+    margin-top:7px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1140,13 +1206,33 @@ body.lightbox-open{overflow:hidden}
 </div>
 <div class="commercial-projects">
 <article class="commercial-project reveal">
-<div class="project-image"><img alt="Allpress Espresso biscuit packaging illustrated by ID Illustrates" loading="lazy" src="assets/images/commission-allpress.png"/></div>
+<div class="project-image has-thumbnails" data-project-gallery>
+  <div class="project-gallery-main">
+    <img data-project-main alt="Allpress Espresso biscuit packaging illustrated by ID Illustrates" loading="lazy" src="assets/images/commission-allpress.png"/>
+  </div>
+  <div class="project-thumbnails" aria-label="More Allpress Espresso packaging images">
+    <button class="project-thumbnail" type="button"><img src="assets/images/allpress-packaging-1.jpg" alt="Allpress Espresso packaging detail 1" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button"><img src="assets/images/allpress-packaging-2.jpg" alt="Allpress Espresso packaging detail 2" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button"><img src="assets/images/allpress-packaging-3.jpg" alt="Allpress Espresso packaging detail 3" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button"><img src="assets/images/allpress-packaging-4.jpg" alt="Allpress Espresso packaging detail 4" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+  </div>
+</div>
 <div class="eyebrow">Packaging / Illustration</div>
 <h3>Allpress Espresso</h3>
 <p>Original illustration developed for Allpress Espresso’s festive biscuit packaging — taking the artwork beyond the page and into a finished branded product.</p>
 </article>
 <article class="commercial-project reveal">
-<div class="project-image"><img alt="Koncept Coffee bespoke illustration by ID Illustrates" loading="lazy" src='assets/images/commission-koncept.png'/></div>
+<div class="project-image has-thumbnails" data-project-gallery>
+  <div class="project-gallery-main">
+    <img data-project-main alt="Koncept Coffee bespoke illustration by ID Illustrates" loading="lazy" src="assets/images/commission-koncept.png"/>
+  </div>
+  <div class="project-thumbnails" aria-label="More Koncept Coffee merchandise images">
+    <button class="project-thumbnail" type="button"><img src="assets/images/koncept-merch-1.jpg" alt="Koncept Coffee merchandise detail 1" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button"><img src="assets/images/koncept-merch-2.jpg" alt="Koncept Coffee merchandise detail 2" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button"><img src="assets/images/koncept-merch-3.jpg" alt="Koncept Coffee merchandise detail 3" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button"><img src="assets/images/koncept-merch-4.jpg" alt="Koncept Coffee merchandise detail 4" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+  </div>
+</div>
 <div class="eyebrow">Merchandise / Live print</div>
 <h3>Koncept Coffee</h3>
 <p>Bespoke illustration created for Koncept Coffee and printed live onto T-shirts and tote bags at the launch — combining commissioned artwork with an interactive brand experience.</p>
@@ -1650,5 +1736,32 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   }
 })();
 </script>
+
+<script>
+/* Allpress + Koncept thumbnail galleries */
+document.querySelectorAll('[data-project-gallery]').forEach(gallery => {
+  const main = gallery.querySelector('[data-project-main]');
+  const thumbs = gallery.querySelectorAll('.project-thumbnail');
+
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const image = thumb.querySelector('img');
+      if (!image || !image.naturalWidth) return;
+
+      main.style.opacity = '0';
+
+      setTimeout(() => {
+        main.src = image.currentSrc || image.src;
+        main.alt = image.alt;
+        main.style.opacity = '1';
+      }, 120);
+
+      thumbs.forEach(item => item.classList.remove('is-active'));
+      thumb.classList.add('is-active');
+    });
+  });
+});
+</script>
+
 </body>
 </html>
