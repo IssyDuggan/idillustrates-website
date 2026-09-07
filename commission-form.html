@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" class="site-loading">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
@@ -240,6 +240,50 @@ input[type="file"]{
 .price-note{margin:10px 0 14px;color:var(--muted);font-size:10px;line-height:1.55}.option-price{margin-left:auto;padding-left:16px;font-size:11px;font-weight:600;white-space:nowrap}
 @media(max-width:760px){.price-guide{grid-column:1}.price-row strong{font-size:20px}.choice{width:100%;min-width:0}.option-price{margin-left:auto}}
 
+
+/* MATCH MAIN SITE COLOUR + REMOVE GUIDE IMAGE BORDERS */
+:root{
+  --paper:#f5f4f2;
+}
+
+body{
+  background:#f5f4f2 !important;
+}
+
+header{
+  background:rgba(245,244,242,.94) !important;
+}
+
+.form-guide-image{
+  border:0 !important;
+  box-shadow:none !important;
+  background:transparent !important;
+}
+
+.upload{
+  background:rgba(255,255,255,.16) !important;
+}
+
+
+/* MATCH ID ILLUSTRATES HEADER BRAND TO MAIN WEBSITE */
+.brand,
+.logo,
+.site-brand,
+header .brand,
+header .logo{
+  font-family:"DM Sans",Arial,sans-serif !important;
+  font-size:15px !important;
+  font-weight:600 !important;
+  line-height:1.2 !important;
+  letter-spacing:.02em !important;
+  text-transform:none !important;
+}
+
+
+/* INITIAL PAGE LOAD — reveal page as one composition */
+html.site-loading body{visibility:hidden}
+html.site-ready body{visibility:visible}
+
 </style>
 </head>
 <body>
@@ -279,7 +323,7 @@ input[type="file"]{
 <div class="field"><label for="venue">What is the address or name of the venue? <span class="req">*</span></label><div class="control"><textarea id="venue" name="Property / venue address or name" required=""></textarea></div></div>
 <div class="field"><label for="deadline">What date do you need this by? <span class="req">*</span></label><div class="control"><input id="deadline" name="Required by" required="" type="date"/></div></div>
 <div class="field"><div class="legend">What size would you like to go for? <span class="req">*</span></div><div class="control">
-<img alt="Paper sizes A5, A4 and A3 guide" class="form-guide-image paper-guide" src="assets/form-guides/paper-sizes-guide.png"/>
+<img decoding="sync" alt="Paper sizes A5, A4 and A3 guide" class="form-guide-image paper-guide" src="assets/form-guides/paper-sizes-guide.png"/>
 <div class="options">
 <label class="choice"><input name="Size" required="" type="radio" value="A5"/> A5 <span class="option-price">£125</span></label>
 <label class="choice"><input name="Size" type="radio" value="A4"/> A4 <span class="option-price">£175 · most popular</span></label>
@@ -288,11 +332,11 @@ input[type="file"]{
 <div class="field"><label for="include">Are there any <strong>special details</strong> that you would like to be included?</label><div class="control"><textarea id="include" name="Special details to include" placeholder='E.g. "The rose bush outside holds a lot of sentimental value."'></textarea></div></div>
 <div class="field"><label for="exclude">Is there anything you don’t want to be included?</label><div class="control"><textarea id="exclude" name="Details to leave out" placeholder='E.g. "Please take out the shed in front."'></textarea></div></div>
 <div class="field"><div class="legend">Would you like it to hang portrait or landscape? <span class="req">*</span></div><div class="control">
-<img alt="Portrait and landscape illustration examples" class="form-guide-image orientation-guide" src="assets/form-guides/portrait-landscape-guide.png"/>
+<img decoding="sync" alt="Portrait and landscape illustration examples" class="form-guide-image orientation-guide" src="assets/form-guides/portrait-landscape-guide.png"/>
 <div class="options"><label class="choice"><input name="Orientation" required="" type="radio" value="Landscape"/> Landscape</label><label class="choice"><input name="Orientation" type="radio" value="Portrait"/> Portrait</label></div>
 </div></div>
 <div class="field"><div class="legend">Reference photos <span class="req">*</span></div><div class="control">
-<img alt="Reference photo and finished sketch example" class="form-guide-image reference-guide" src="assets/form-guides/reference-photo-guide.png"/>
+<img decoding="sync" alt="Reference photo and finished sketch example" class="form-guide-image reference-guide" src="assets/form-guides/reference-photo-guide.png"/>
 <div class="upload"><input accept="image/*" multiple="" name="Reference photos" required="" type="file"/></div>
 <p class="help">Please upload a few good-quality photos of the property (up to 10 where possible). Include at least one clear, front-on view with no obstacles. If you mentioned special details above, include reference photos for those too. The clearer the references, the better.</p>
 </div></div>
@@ -372,4 +416,43 @@ if (menuButton && header) {
 
 }
 </script>
+
+<script>
+/* Reveal the page when its initial image set is ready. */
+(() => {
+  const root = document.documentElement;
+  const reveal = () => {
+    root.classList.remove('site-loading');
+    root.classList.add('site-ready');
+  };
+
+  const waitForImages = () => {
+    const images = [...document.images];
+    if (!images.length) return reveal();
+
+    let remaining = images.filter(img => !img.complete).length;
+    if (!remaining) return reveal();
+
+    const done = () => {
+      remaining -= 1;
+      if (remaining <= 0) reveal();
+    };
+
+    images.filter(img => !img.complete).forEach(img => {
+      img.addEventListener('load', done, {once:true});
+      img.addEventListener('error', done, {once:true});
+    });
+
+    /* Never leave the page hidden on a slow/broken connection. */
+    window.setTimeout(reveal, 4500);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', waitForImages, {once:true});
+  } else {
+    waitForImages();
+  }
+})();
+</script>
+
 </body></html>

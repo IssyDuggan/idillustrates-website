@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" class="site-loading">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -1353,6 +1353,529 @@ img,video,svg,canvas{
   }
 }
 
+
+/* BRAND COLLABORATIONS — cleaner spacing, no bunching */
+#commercial.commercial-section{
+  padding:clamp(42px,5vw,72px) 0 !important;
+}
+
+#commercial .wrap{
+  width:100% !important;
+  max-width:none !important;
+  padding-left:var(--pad) !important;
+  padding-right:var(--pad) !important;
+}
+
+#commercial .commercial-head{
+  grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr) !important;
+  gap:clamp(28px,5vw,72px) !important;
+  margin-bottom:clamp(30px,4vw,48px) !important;
+  align-items:start !important;
+}
+
+#commercial .commercial-head h2,
+#commercial .commercial-intro,
+#commercial .commercial-project,
+#commercial .project-image{
+  min-width:0;
+}
+
+#commercial .commercial-projects{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:clamp(22px,3vw,42px) !important;
+}
+
+#commercial .commercial-project:nth-child(2){
+  margin-top:0 !important;
+}
+
+#commercial .commercial-project{
+  padding-top:0 !important;
+}
+
+#commercial .commercial-project .project-image{
+  margin-bottom:14px !important;
+}
+
+#commercial .commercial-actions{
+  margin-top:24px !important;
+}
+
+@media(max-width:800px){
+  #commercial .commercial-head,
+  #commercial .commercial-projects{
+    grid-template-columns:1fr !important;
+  }
+
+  #commercial .commercial-intro{
+    justify-self:start !important;
+    max-width:620px;
+  }
+
+  #commercial .commercial-projects{
+    gap:30px !important;
+  }
+}
+
+/* FEATURED COMMISSIONS — reduce excessive spacing */
+#commissions .feature-grid{
+  gap:clamp(22px,3vw,42px) !important;
+}
+
+#commissions .feature-story{
+  gap:18px !important;
+}
+
+#commissions .feature-story:nth-child(2){
+  margin-top:28px !important;
+}
+
+#commissions .carousel-wrap{
+  margin-top:42px !important;
+}
+
+@media(max-width:980px){
+  #commissions .feature-story:nth-child(2){
+    margin-top:10px !important;
+  }
+}
+
+/* ABOUT — full bleed to the browser edges */
+.about-band{
+  width:100vw !important;
+  max-width:none !important;
+  margin-left:calc(50% - 50vw) !important;
+  margin-right:calc(50% - 50vw) !important;
+  margin-top:48px !important;
+  padding:0 !important;
+}
+
+.about-band .inner{
+  width:100% !important;
+  max-width:none !important;
+  margin:0 !important;
+  padding:0 !important;
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:0 !important;
+  align-items:stretch !important;
+}
+
+.about-band .about-portrait{
+  width:100% !important;
+  max-width:none !important;
+  margin:0 !important;
+}
+
+.about-band .about-portrait img{
+  width:100% !important;
+  height:100% !important;
+  min-height:520px;
+  object-fit:cover !important;
+  margin:0 !important;
+}
+
+.about-band .about-copy,
+.about-band .inner > div:not(.about-portrait){
+  padding:clamp(38px,6vw,88px) var(--pad) !important;
+  align-self:center;
+}
+
+@media(max-width:980px){
+  .about-band .inner{
+    grid-template-columns:1fr !important;
+  }
+
+  .about-band .about-portrait img{
+    min-height:0;
+    aspect-ratio:4/5;
+  }
+
+  .about-band .about-copy,
+  .about-band .inner > div:not(.about-portrait){
+    padding:38px var(--pad) 52px !important;
+  }
+}
+
+
+/* BRAND COLLABORATIONS — prevent text overlap */
+#commercial .commercial-head{
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  gap:22px !important;
+  align-items:start !important;
+  margin-bottom:36px !important;
+}
+
+#commercial .commercial-head h2{
+  max-width:100% !important;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+
+#commercial .commercial-intro{
+  justify-self:start !important;
+  width:100% !important;
+  max-width:680px !important;
+}
+
+#commercial .commercial-intro .lead,
+#commercial .commercial-intro p{
+  max-width:100% !important;
+}
+
+/* ABOUT — keep full-bleed band, but make portrait more restrained */
+.about-band .inner{
+  grid-template-columns:minmax(320px, .72fr) minmax(0, 1.28fr) !important;
+}
+
+.about-band .about-portrait{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:clamp(24px,3vw,46px) !important;
+}
+
+.about-band .about-portrait img{
+  width:min(100%,460px) !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:680px !important;
+  object-fit:contain !important;
+}
+
+@media(max-width:980px){
+  .about-band .inner{
+    grid-template-columns:1fr !important;
+  }
+
+  .about-band .about-portrait{
+    padding:28px var(--pad) 12px !important;
+  }
+
+  .about-band .about-portrait img{
+    width:min(100%,420px) !important;
+    max-height:none !important;
+    aspect-ratio:auto !important;
+  }
+}
+
+
+/* ABOUT PORTRAIT — anchor firmly to the left edge */
+.about-band .about-portrait{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  padding:0 !important;
+}
+
+.about-band .about-portrait img{
+  display:block !important;
+  width:min(100%,460px) !important;
+  height:auto !important;
+  margin:0 !important;
+  object-fit:contain !important;
+  object-position:left center !important;
+}
+
+@media(max-width:980px){
+  .about-band .about-portrait{
+    justify-content:flex-start !important;
+    padding:0 !important;
+  }
+
+  .about-band .about-portrait img{
+    width:min(82vw,420px) !important;
+    margin:0 !important;
+    object-position:left center !important;
+  }
+}
+
+
+/* INITIAL PAGE LOAD — reveal page as one composition */
+html.site-loading body{visibility:hidden}
+html.site-ready body{visibility:visible}
+
+
+/* ABOUT — redesigned editorial split */
+.about-band{
+  width:100% !important;
+  margin:48px 0 0 !important;
+  padding:0 !important;
+  background:#111 !important;
+  color:#f4f1ea !important;
+}
+
+.about-band .inner{
+  width:100% !important;
+  max-width:none !important;
+  margin:0 !important;
+  padding:0 !important;
+  display:grid !important;
+  grid-template-columns:minmax(280px,38vw) minmax(0,1fr) !important;
+  gap:0 !important;
+  align-items:stretch !important;
+}
+
+.about-band .about-portrait{
+  width:100% !important;
+  max-width:none !important;
+  margin:0 !important;
+  padding:0 !important;
+  display:block !important;
+  overflow:hidden !important;
+  background:#191919;
+}
+
+.about-band .about-portrait img{
+  width:100% !important;
+  height:100% !important;
+  min-height:560px !important;
+  max-height:720px !important;
+  margin:0 !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+
+.about-band .about-copy,
+.about-band .inner > div:not(.about-portrait){
+  width:100% !important;
+  max-width:none !important;
+  padding:clamp(48px,6vw,92px) clamp(28px,6vw,100px) !important;
+  align-self:center !important;
+}
+
+.about-band h2{
+  max-width:760px;
+  margin:0 0 34px !important;
+  font-size:clamp(54px,7vw,112px) !important;
+  line-height:.84 !important;
+}
+
+.about-band p{
+  max-width:620px !important;
+  margin:0 0 18px !important;
+  font-size:clamp(15px,1.25vw,18px) !important;
+  line-height:1.65 !important;
+}
+
+@media(max-width:820px){
+  .about-band .inner{
+    grid-template-columns:1fr !important;
+  }
+
+  .about-band .about-portrait{
+    width:72% !important;
+    max-width:440px !important;
+    justify-self:start !important;
+  }
+
+  .about-band .about-portrait img{
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    aspect-ratio:4/5 !important;
+    object-fit:cover !important;
+  }
+
+  .about-band .about-copy,
+  .about-band .inner > div:not(.about-portrait){
+    padding:38px var(--pad) 54px !important;
+  }
+
+  .about-band h2{
+    margin-bottom:26px !important;
+  }
+}
+
+
+/* ABOUT PORTRAIT — inset slightly within the black band */
+.about-band .about-portrait{
+  box-sizing:border-box !important;
+  padding:clamp(22px,2.6vw,42px) 0 clamp(22px,2.6vw,42px) clamp(22px,2.6vw,42px) !important;
+  background:#111 !important;
+}
+
+.about-band .about-portrait img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+}
+
+@media(max-width:820px){
+  .about-band .about-portrait{
+    width:78% !important;
+    max-width:460px !important;
+    padding:24px 0 0 var(--pad) !important;
+  }
+}
+
+
+/* FEATURED COMMISSIONS — tighter spacing */
+#commissions .feature-grid{
+  gap:clamp(14px,1.8vw,26px) !important;
+}
+
+#commissions .feature-story{
+  gap:14px !important;
+}
+
+#commissions .feature-story:nth-child(2){
+  margin-top:12px !important;
+}
+
+#commissions .carousel-wrap{
+  margin-top:28px !important;
+}
+
+@media(max-width:980px){
+  #commissions .feature-grid{
+    gap:18px !important;
+  }
+
+  #commissions .feature-story:nth-child(2){
+    margin-top:0 !important;
+  }
+
+  #commissions .carousel-wrap{
+    margin-top:24px !important;
+  }
+}
+
+
+/* ABOUT — on wide screens keep heading below the portrait's top edge */
+@media(min-width:821px){
+  .about-band .about-copy,
+  .about-band .inner > div:not(.about-portrait){
+    align-self:start !important;
+    padding-top:clamp(72px,7vw,110px) !important;
+  }
+
+  .about-band h2{
+    margin-top:0 !important;
+  }
+}
+
+
+/* ABOUT — considered editorial layout */
+.about-band{
+  width:100% !important;
+  margin:56px 0 0 !important;
+  padding:0 !important;
+  background:#111 !important;
+  color:#f4f1ea !important;
+}
+
+.about-band .inner{
+  width:min(1440px,100%) !important;
+  max-width:none !important;
+  margin:0 auto !important;
+  padding:clamp(28px,4vw,58px) var(--pad) !important;
+  display:grid !important;
+  grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr) !important;
+  gap:clamp(42px,6vw,96px) !important;
+  align-items:center !important;
+}
+
+.about-band .about-portrait{
+  width:100% !important;
+  max-width:520px !important;
+  margin:0 !important;
+  padding:0 !important;
+  overflow:hidden !important;
+  background:#181818 !important;
+  align-self:center !important;
+}
+
+.about-band .about-portrait img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+  aspect-ratio:4/5 !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  margin:0 !important;
+}
+
+.about-band .about-content{
+  min-width:0;
+  max-width:680px;
+  padding:clamp(8px,1vw,18px) 0 !important;
+}
+
+.about-band .about-kicker{
+  margin:0 0 20px !important;
+  font-size:9px !important;
+  line-height:1 !important;
+  letter-spacing:.16em !important;
+  text-transform:uppercase !important;
+  color:#aaa59d !important;
+}
+
+.about-band h2{
+  margin:0 0 clamp(30px,4vw,48px) !important;
+  font-size:clamp(48px,5.7vw,88px) !important;
+  line-height:.88 !important;
+  letter-spacing:-.055em !important;
+  max-width:none !important;
+}
+
+.about-band .about-copy{
+  width:100% !important;
+  max-width:560px !important;
+  padding:0 !important;
+}
+
+.about-band .about-copy p{
+  margin:0 0 18px !important;
+  max-width:560px !important;
+  font-size:clamp(15px,1.2vw,17px) !important;
+  line-height:1.68 !important;
+  color:#d8d4cc !important;
+}
+
+.about-band .about-copy .button{
+  margin-top:12px !important;
+  border-color:#f4f1ea !important;
+  color:#f4f1ea !important;
+}
+
+@media(max-width:820px){
+  .about-band{
+    margin-top:42px !important;
+  }
+
+  .about-band .inner{
+    grid-template-columns:1fr !important;
+    gap:34px !important;
+    padding:26px var(--pad) 46px !important;
+  }
+
+  .about-band .about-portrait{
+    width:min(82%,420px) !important;
+    max-width:420px !important;
+    justify-self:start !important;
+  }
+
+  .about-band .about-content{
+    width:100% !important;
+    max-width:620px !important;
+    padding:0 !important;
+  }
+
+  .about-band .about-kicker{
+    margin-bottom:16px !important;
+  }
+
+  .about-band h2{
+    font-size:clamp(48px,15vw,74px) !important;
+    margin-bottom:28px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1381,7 +1904,7 @@ img,video,svg,canvas{
 </div>
 </section>
 <section class="hero-image reveal">
-<img alt="Issy Duggan live screen printing at a Koncept Coffee event" src="assets/images/hero-koncept.png"/>
+<img decoding="sync" alt="Issy Duggan live screen printing at a Koncept Coffee event" src="assets/images/hero-koncept.png"/>
 </section>
 <div class="hero-note reveal" id="live">
 <!-- <strong>Live screen printing that makes a launch worth remembering.</strong>
@@ -1394,53 +1917,53 @@ img,video,svg,canvas{
 <div class="client-track">
 <div class="client-set">
 <div class="client-logo logo-starbucks" title="Starbucks">
-<img alt="Starbucks logo" loading="lazy" referrerpolicy="no-referrer" src="assets/logos/starbucks.png"/>
+<img decoding="sync" alt="Starbucks logo" referrerpolicy="no-referrer" src="assets/logos/starbucks.png"/>
 </div>
 <div class="client-logo logo-levis" title="Levi's">
-<img alt="Levi's logo" loading="lazy" referrerpolicy="no-referrer" src="assets/logos/levis.png"/>
+<img decoding="sync" alt="Levi's logo" referrerpolicy="no-referrer" src="assets/logos/levis.png"/>
 </div>
 <div class="client-logo logo-landor" title="Landor">
-<img alt="Landor logo" loading="lazy" referrerpolicy="no-referrer" src="assets/logos/landor.png"/>
+<img decoding="sync" alt="Landor logo" referrerpolicy="no-referrer" src="assets/logos/landor.png"/>
 </div>
 <div class="client-logo logo-metro" title="Metro">
-<img alt="Metro logo" loading="lazy" referrerpolicy="no-referrer" src="assets/logos/metro.png"/>
+<img decoding="sync" alt="Metro logo" referrerpolicy="no-referrer" src="assets/logos/metro.png"/>
 </div>
 <div class="client-logo logo-allpress" title="Allpress Espresso">
-<img alt="Allpress Espresso logo" loading="lazy" src="assets/logos/allpress-espresso.svg"/>
+<img decoding="sync" alt="Allpress Espresso logo" src="assets/logos/allpress-espresso.png"/>
 </div>
 <div class="client-logo logo-beyond-nine" title="Beyond Nine">
-<img alt="Beyond Nine logo" loading="lazy" referrerpolicy="no-referrer" src="assets/logos/beyondnine.svg"/>
+<img decoding="sync" alt="Beyond Nine logo" referrerpolicy="no-referrer" src="assets/logos/beyondnine.svg"/>
 </div>
 <div class="client-logo logo-koncept" title="Koncept Coffee">
-<img alt="Koncept Coffee logo" loading="lazy" src="assets/logos/koncept.png"/>
+<img decoding="sync" alt="Koncept Coffee logo" src="assets/logos/koncept.png"/>
 </div>
 <div class="client-logo logo-atelier-three" title="Atelier Three">
-<img alt="Atelier Three logo" loading="lazy" src="assets/logos/atelierthree_logo.png"/>
+<img decoding="sync" alt="Atelier Three logo" src="assets/logos/atelierthree_logo.png"/>
 </div>
 <div aria-hidden="true" class="client-set">
 <div class="client-logo logo-starbucks" title="Starbucks">
-<img alt="Starbucks logo" loading="lazy" referrerpolicy="no-referrer" src="assets/logos/starbucks.png"/>
+<img decoding="sync" alt="Starbucks logo" referrerpolicy="no-referrer" src="assets/logos/starbucks.png"/>
 </div>
 <div class="client-logo logo-levis" title="Levi's">
-<img alt="Levi's logo" loading="lazy" referrerpolicy="no-referrer" src="assets/logos/levis.png"/>
+<img decoding="sync" alt="Levi's logo" referrerpolicy="no-referrer" src="assets/logos/levis.png"/>
 </div>
 <div class="client-logo logo-landor" title="Landor">
-<img alt="Landor logo" loading="lazy" referrerpolicy="no-referrer"src="assets/logos/landor.png"/>
+<img decoding="sync" alt="Landor logo" referrerpolicy="no-referrer"src="assets/logos/landor.png"/>
 </div>
 <div class="client-logo logo-metro" title="Metro">
-<img alt="Metro logo" loading="lazy" referrerpolicy="no-referrer" src="assets/logos/metro.png"/>
+<img decoding="sync" alt="Metro logo" referrerpolicy="no-referrer" src="assets/logos/metro.png"/>
 </div>
 <div class="client-logo logo-allpress" title="Allpress Espresso">
-<img alt="Allpress Espresso logo" loading="lazy" src="assets/logos/allpress-espresso.svg"/>
+<img decoding="sync" alt="Allpress Espresso logo" src="assets/logos/allpress-espresso.png"/>
 </div>
 <div class="client-logo logo-beyond-nine" title="Beyond Nine">
-<img alt="Beyond Nine logo" loading="lazy" referrerpolicy="no-referrer" src="assets/logos/beyondnine.svg"/>
+<img decoding="sync" alt="Beyond Nine logo" referrerpolicy="no-referrer" src="assets/logos/beyondnine.svg"/>
 </div>
 <div class="client-logo logo-koncept" title="Koncept Coffee">
-<img alt="Koncept Coffee logo" loading="lazy" src="assets/logos/koncept.png"/>
+<img decoding="sync" alt="Koncept Coffee logo" src="assets/logos/koncept.png"/>
 </div>
 <div class="client-logo logo-atelier-three" title="Atelier Three">
-<img alt="Atelier Three logo" loading="lazy" src="assets/logos/atelierthree_logo.png"/>
+<img decoding="sync" alt="Atelier Three logo" src="assets/logos/atelierthree_logo.png"/>
 </div>
 </div>
 </div>
@@ -1465,16 +1988,16 @@ img,video,svg,canvas{
 <article class="commercial-project reveal">
 <div class="project-image has-thumbnails" data-project-gallery>
   <div class="project-gallery-main">
-    <img data-project-main alt="Allpress Espresso packaging detail 3" loading="lazy" src="assets/images/allpress-packaging-3.jpg"/>
+    <img decoding="sync" data-project-main alt="Allpress Espresso packaging detail 3" src="assets/images/allpress-packaging-3.jpg"/>
   </div>
   <div class="project-thumbnails" aria-label="More Allpress Espresso packaging images">
-        <button class="project-thumbnail is-active" type="button" data-src="assets/images/allpress-packaging-3.jpg" data-alt="Allpress Espresso packaging detail 3"><img src="assets/images/allpress-packaging-3.jpg" alt="Allpress Espresso packaging detail 3" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+        <button class="project-thumbnail is-active" type="button" data-src="assets/images/allpress-packaging-3.jpg" data-alt="Allpress Espresso packaging detail 3"><img decoding="sync" src="assets/images/allpress-packaging-3.jpg" alt="Allpress Espresso packaging detail 3" onerror="this.closest('.project-thumbnail').hidden=true"></button>
 
-    <button class="project-thumbnail" type="button" data-src="assets/images/allpress-packaging-1.jpg" data-alt="Allpress Espresso packaging detail 1"><img src="assets/images/allpress-packaging-1.jpg" alt="Allpress Espresso packaging detail 1" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
-    <button class="project-thumbnail" type="button" data-src="assets/images/allpress-packaging-2.jpg" data-alt="Allpress Espresso packaging detail 2"><img src="assets/images/allpress-packaging-2.jpg" alt="Allpress Espresso packaging detail 2" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button" data-src="assets/images/allpress-packaging-1.jpg" data-alt="Allpress Espresso packaging detail 1"><img decoding="sync" src="assets/images/allpress-packaging-1.jpg" alt="Allpress Espresso packaging detail 1" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button" data-src="assets/images/allpress-packaging-2.jpg" data-alt="Allpress Espresso packaging detail 2"><img decoding="sync" src="assets/images/allpress-packaging-2.jpg" alt="Allpress Espresso packaging detail 2" onerror="this.closest('.project-thumbnail').hidden=true"></button>
 
-    <button class="project-thumbnail" type="button" data-src="assets/images/allpress-packaging-4.jpg" data-alt="Allpress Espresso packaging detail 4"><img src="assets/images/allpress-packaging-4.jpg" alt="Allpress Espresso packaging detail 4" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
-        <button class="project-thumbnail" type="button" data-src="assets/images/commission-allpress.png" data-alt="Allpress Espresso biscuit packaging illustrated by ID Illustrates" aria-label="Show original Allpress Espresso packaging image"><img src="assets/images/commission-allpress.png" alt="Allpress Espresso biscuit packaging illustrated by ID Illustrates" loading="lazy"></button>
+    <button class="project-thumbnail" type="button" data-src="assets/images/allpress-packaging-4.jpg" data-alt="Allpress Espresso packaging detail 4"><img decoding="sync" src="assets/images/allpress-packaging-4.jpg" alt="Allpress Espresso packaging detail 4" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+        <button class="project-thumbnail" type="button" data-src="assets/images/commission-allpress.png" data-alt="Allpress Espresso biscuit packaging illustrated by ID Illustrates" aria-label="Show original Allpress Espresso packaging image"><img decoding="sync" src="assets/images/commission-allpress.png" alt="Allpress Espresso biscuit packaging illustrated by ID Illustrates"></button>
   </div>
 </div>
 <div class="eyebrow">Packaging / Illustration</div>
@@ -1484,15 +2007,15 @@ img,video,svg,canvas{
 <article class="commercial-project reveal">
 <div class="project-image has-thumbnails" data-project-gallery>
   <div class="project-gallery-main">
-    <img data-project-main alt="Koncept Coffee bespoke illustration by ID Illustrates" loading="lazy" src="assets/images/koncept-merch-2.jpg"/>
+    <img decoding="sync" data-project-main alt="Koncept Coffee bespoke illustration by ID Illustrates" src="assets/images/koncept-merch-2.jpg"/>
   </div>
   <div class="project-thumbnails" aria-label="More Koncept Coffee merchandise images">
-        <button class="project-thumbnail is-active" type="button" data-src="assets/images/koncept-merch-2.jpg" data-alt="Koncept Coffee merchandise detail 2"><img src="assets/images/koncept-merch-2.jpg" alt="Koncept Coffee merchandise detail 2" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
-    <button class="project-thumbnail" type="button" data-src="assets/images/commission-koncept.png" data-alt="Koncept Coffee bespoke illustration by ID Illustrates" aria-label="Show original Koncept Coffee merchandise image"><img src="assets/images/commission-koncept.png" alt="Koncept Coffee bespoke illustration by ID Illustrates" loading="lazy"></button>
-    <button class="project-thumbnail" type="button" data-src="assets/images/koncept-merch-1.jpg" data-alt="Koncept Coffee merchandise detail 1"><img src="assets/images/koncept-merch-1.jpg" alt="Koncept Coffee merchandise detail 1" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+        <button class="project-thumbnail is-active" type="button" data-src="assets/images/koncept-merch-2.jpg" data-alt="Koncept Coffee merchandise detail 2"><img decoding="sync" src="assets/images/koncept-merch-2.jpg" alt="Koncept Coffee merchandise detail 2" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button" data-src="assets/images/commission-koncept.png" data-alt="Koncept Coffee bespoke illustration by ID Illustrates" aria-label="Show original Koncept Coffee merchandise image"><img decoding="sync" src="assets/images/commission-koncept.png" alt="Koncept Coffee bespoke illustration by ID Illustrates"></button>
+    <button class="project-thumbnail" type="button" data-src="assets/images/koncept-merch-1.jpg" data-alt="Koncept Coffee merchandise detail 1"><img decoding="sync" src="assets/images/koncept-merch-1.jpg" alt="Koncept Coffee merchandise detail 1" onerror="this.closest('.project-thumbnail').hidden=true"></button>
 
-    <button class="project-thumbnail" type="button" data-src="assets/images/koncept-merch-3.jpg" data-alt="Koncept Coffee merchandise detail 3"><img src="assets/images/koncept-merch-3.jpg" alt="Koncept Coffee merchandise detail 3" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
-    <button class="project-thumbnail" type="button" data-src="assets/images/koncept-merch-4.jpg" data-alt="Koncept Coffee merchandise detail 4"><img src="assets/images/koncept-merch-4.jpg" alt="Koncept Coffee merchandise detail 4" loading="lazy" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button" data-src="assets/images/koncept-merch-3.jpg" data-alt="Koncept Coffee merchandise detail 3"><img decoding="sync" src="assets/images/koncept-merch-3.jpg" alt="Koncept Coffee merchandise detail 3" onerror="this.closest('.project-thumbnail').hidden=true"></button>
+    <button class="project-thumbnail" type="button" data-src="assets/images/koncept-merch-4.jpg" data-alt="Koncept Coffee merchandise detail 4"><img decoding="sync" src="assets/images/koncept-merch-4.jpg" alt="Koncept Coffee merchandise detail 4" onerror="this.closest('.project-thumbnail').hidden=true"></button>
   </div>
 </div>
 <div class="eyebrow">Merchandise / Live print</div>
@@ -1518,7 +2041,7 @@ img,video,svg,canvas{
 <div class="feature-grid">
 <article class="feature-story reveal">
 <div class="feature-img">
-<img alt="Bespoke house illustration commissioned as a birthday gift" src="assets/images/commission-sammy.png"/>
+<img decoding="sync" alt="Bespoke house illustration commissioned as a birthday gift" src="assets/images/commission-sammy.png"/>
 </div>
 <div class="feature-copy">
 <div class="eyebrow">Commission / Birthday gift</div>
@@ -1531,7 +2054,7 @@ img,video,svg,canvas{
 </article>
 <article class="feature-story reveal sarah-phillip">
 <div class="feature-img">
-<img alt="Sarah and Phillip wedding venue illustration" src="assets/images/commission-sarah.png"/>
+<img decoding="sync" alt="Sarah and Phillip wedding venue illustration" src="assets/images/commission-sarah.png"/>
 </div>
 <div class="feature-copy">
 <div class="eyebrow">Commission / Wedding invitations</div>
@@ -1548,7 +2071,7 @@ img,video,svg,canvas{
 <div class="carousel-viewport">
 <div class="carousel" id="commissionCarousel">
 <article class="slide">
-<div class="commission-watermark-frame"><img alt="Updated A4 house portrait commissioned by Shanae as a moving-house keepsake gift" src="assets/images/commission-shanae-a4.png"/></div>
+<div class="commission-watermark-frame"><img decoding="sync" alt="Updated A4 house portrait commissioned by Shanae as a moving-house keepsake gift" src="assets/images/commission-shanae-a4.png"/></div>
 <div class="slide-copy">
 <div class="eyebrow">Commission / A4 house portrait</div>
 <h4>Ellie’s Parents</h4>
@@ -1556,7 +2079,7 @@ img,video,svg,canvas{
 </div>
 </article>
 <article class="slide">
-<div class="commission-watermark-frame"><img alt="Updated A5 house portrait commissioned as a wedding present celebrating a couple’s first home together" src="assets/images/commission-hannah-a5.png"/></div>
+<div class="commission-watermark-frame"><img decoding="sync" alt="Updated A5 house portrait commissioned as a wedding present celebrating a couple’s first home together" src="assets/images/commission-hannah-a5.png"/></div>
 <div class="slide-copy">
 <div class="eyebrow">Commission / A5 wedding gift</div>
 <h4>Rebecca &amp; Oli </h4>
@@ -1564,7 +2087,7 @@ img,video,svg,canvas{
 </div>
 </article>
 <article class="slide">
-<div class="commission-watermark-frame"><img alt="Emil and Farida bespoke leaving gift illustration" src="assets/images/commission-emil.png"/></div>
+<div class="commission-watermark-frame"><img decoding="sync" alt="Emil and Farida bespoke leaving gift illustration" src="assets/images/commission-emil.png"/></div>
 <div class="slide-copy">
 <div class="eyebrow">Commission / A4 Leaving gift</div>
 <h4>Emil &amp; Farida</h4>
@@ -1572,7 +2095,7 @@ img,video,svg,canvas{
 </div>
 </article>
 <article class="slide">
-<div class="commission-watermark-frame"><img alt="Anniversary gift illustration" src="assets/images/commission-jon.png"/></div>
+<div class="commission-watermark-frame"><img decoding="sync" alt="Anniversary gift illustration" src="assets/images/commission-jon.png"/></div>
 <div class="slide-copy">
 <div class="eyebrow">Commission / A4 Anniversary</div>
 <h4>Jon's Parents</h4>
@@ -1580,7 +2103,7 @@ img,video,svg,canvas{
 </div>
 </article>
 <article class="slide">
-<div class="commission-watermark-frame"><img alt="Amy and Tom house commission" src="assets/images/commission-amy-tom.png"/></div>
+<div class="commission-watermark-frame"><img decoding="sync" alt="Amy and Tom house commission" src="assets/images/commission-amy-tom.png"/></div>
 <div class="slide-copy">
 <div class="eyebrow">Commission / A4 Christmas gift</div>
 <h4>Amy &amp; Tom</h4>
@@ -1601,7 +2124,7 @@ img,video,svg,canvas{
 <section class="workshops rule" id="workshops">
 <div class="wrap workshop-grid">
 <div class="workshop-media reveal">
-<img alt="Screen printing workshop led by Issy Duggan" src="assets/images/workshops.png"/>
+<img decoding="sync" alt="Screen printing workshop led by Issy Duggan" src="assets/images/workshops.png"/>
 </div>
 <div class="workshop-copy reveal">
 <div class="eyebrow">Workshops / Learn by making</div>
@@ -1619,14 +2142,17 @@ img,video,svg,canvas{
 </section>
 <section class="about-band" id="about">
 <div class="inner">
-<div class="about-portrait">
-<img src="assets/images/about-issy-new.png" alt="Issy Duggan, artist, illustrator and printmaker"/>
+<div class="about-portrait reveal">
+<img decoding="sync" src="assets/images/about-issy-new.png" alt="Issy Duggan, artist, illustrator and printmaker"/>
 </div>
+<div class="about-content">
+<p class="about-kicker reveal">About</p>
 <h2 class="reveal">PLACE.<br/><em>DRAWING.</em><br/>MEMORY.</h2>
-<div class="reveal">
+<div class="about-copy reveal">
 <p>I'm Issy Duggan, a London-based artist, illustrator and printmaker. My work starts with drawing places closely, noticing the architecture, objects and small details that give somewhere its character.</p>
 <p>I work across original illustration, traditional printmaking, live screen-print experiences and bespoke projects for brands, spaces and private clients.</p>
-<a class="button" href="#contact" style="border-color:#f4f1ea;margin-top:12px">Start a project →</a>
+<a class="button" href="#contact">Start a project →</a>
+</div>
 </div>
 </div>
 </section>
@@ -1686,7 +2212,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 <div aria-label="Enlarged commission artwork" aria-modal="true" class="commission-lightbox" id="commissionLightbox" role="dialog">
 <button aria-label="Close enlarged image" class="commission-lightbox__close" type="button">×</button>
-<img alt="" class="commission-lightbox__image" src=""/>
+<img decoding="sync" alt="" class="commission-lightbox__image" src=""/>
 <div class="commission-lightbox__hint">Click outside or press Esc to close</div>
 </div>
 <script>
@@ -2072,6 +2598,45 @@ document.querySelectorAll('[data-project-gallery]').forEach(gallery => {
   window.addEventListener('resize', () => {
     if (window.innerWidth > 720) closeMenu();
   });
+})();
+</script>
+
+
+<script>
+/* Reveal the page when its initial image set is ready. */
+(() => {
+  const root = document.documentElement;
+  const reveal = () => {
+    root.classList.remove('site-loading');
+    root.classList.add('site-ready');
+  };
+
+  const waitForImages = () => {
+    const images = [...document.images];
+    if (!images.length) return reveal();
+
+    let remaining = images.filter(img => !img.complete).length;
+    if (!remaining) return reveal();
+
+    const done = () => {
+      remaining -= 1;
+      if (remaining <= 0) reveal();
+    };
+
+    images.filter(img => !img.complete).forEach(img => {
+      img.addEventListener('load', done, {once:true});
+      img.addEventListener('error', done, {once:true});
+    });
+
+    /* Never leave the page hidden on a slow/broken connection. */
+    window.setTimeout(reveal, 4500);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', waitForImages, {once:true});
+  } else {
+    waitForImages();
+  }
 })();
 </script>
 
