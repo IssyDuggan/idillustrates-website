@@ -1876,6 +1876,41 @@ html.site-ready body{visibility:visible}
   }
 }
 
+
+/* COMMISSION CAROUSEL — larger, more image-led thumbnails */
+#commissions .carousel-wrap{
+  margin-top:30px !important;
+}
+
+#commissions .carousel-viewport{
+  overflow:hidden;
+}
+
+#commissions .carousel-track{
+  gap:clamp(16px,2vw,26px) !important;
+}
+
+#commissions .carousel-card{
+  flex:0 0 clamp(240px,27vw,390px) !important;
+}
+
+#commissions .carousel-card img{
+  width:100% !important;
+  height:auto !important;
+  aspect-ratio:4/5 !important;
+  object-fit:contain !important;
+}
+
+@media(max-width:720px){
+  #commissions .carousel-card{
+    flex-basis:min(72vw,320px) !important;
+  }
+
+  #commissions .carousel-track{
+    gap:14px !important;
+  }
+}
+
 </style>
 </head>
 <body>
