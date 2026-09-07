@@ -48,7 +48,7 @@ form{padding:30px 0 100px}.field{display:grid;grid-template-columns:minmax(180px
   height:auto;
   display:block;
   background:#fff;
-;
+  border:1px solid var(--line);
   margin:0 0 22px;
   object-fit:contain;
 }
@@ -64,7 +64,7 @@ form{padding:30px 0 100px}.field{display:grid;grid-template-columns:minmax(180px
 
 
 /* Mobile form polish */
-
+.form-guide-image{border:1px solid rgba(17,17,17,.18)!important;box-shadow:0 7px 20px rgba(17,17,17,.08)}
 @media(max-width:720px){:root{--pad:20px}.site-header{padding:14px var(--pad)}input,textarea,select{font-size:16px!important}.form-guide-image{box-shadow:0 5px 16px rgba(17,17,17,.09)}.button,button[type="submit"]{min-height:46px}}
 @media(max-width:420px){:root{--pad:16px}}
 
@@ -232,6 +232,14 @@ input[type="file"]{
   }
 }
 
+
+/* COMMISSION PRICING */
+.price-guide{grid-column:2;margin:18px 0 28px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.price-row{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line)}
+.price-row:last-of-type{border-bottom:0}.price-row strong{font-family:var(--serif);font-size:22px;font-weight:400}.price-row span{font-size:12px;font-weight:600}
+.price-note{margin:10px 0 14px;color:var(--muted);font-size:10px;line-height:1.55}.option-price{margin-left:auto;padding-left:16px;font-size:11px;font-weight:600;white-space:nowrap}
+@media(max-width:760px){.price-guide{grid-column:1}.price-row strong{font-size:20px}.choice{width:100%;min-width:0}.option-price{margin-left:auto}}
+
 </style>
 </head>
 <body>
@@ -244,6 +252,12 @@ input[type="file"]{
 <p class="small">Each commission is an original, hand-drawn illustration using fineliner on high-quality 210gsm paper, signed by me and carefully packaged with protective backing. Whether it’s your home, a wedding venue, a favourite date spot or somewhere that holds a special memory, I’d love to draw it for you.</p>
 <p class="small">My usual turnaround is <strong>2–3 weeks</strong>, with priority options available if you need it sooner. A <strong>50% deposit</strong> is required before I begin, with the remaining balance due once you’ve received your artwork. One round of revisions is included.</p>
 <p class="small">All UK commissions are sent via tracked First Class postage. Digital versions, pets and other personalised extras can also be added to your commission.</p>
+</div>
+<div class="price-guide" aria-label="Commission price guide">
+<div class="price-row"><strong>A5 original</strong><span>£125</span></div>
+<div class="price-row"><strong>A4 original</strong><span>£175</span></div>
+<div class="price-row"><strong>A3 original</strong><span>£250</span></div>
+<p class="price-note">Prices include one original hand-drawn illustration and one round of revisions. Particularly complex buildings or scenes may be quoted separately before work begins.</p>
 </div>
 </section>
 <form action="https://formsubmit.co/info@idillustrates.com" enctype="multipart/form-data" method="POST">
@@ -267,9 +281,9 @@ input[type="file"]{
 <div class="field"><div class="legend">What size would you like to go for? <span class="req">*</span></div><div class="control">
 <img alt="Paper sizes A5, A4 and A3 guide" class="form-guide-image paper-guide" src="assets/form-guides/paper-sizes-guide.png"/>
 <div class="options">
-<label class="choice"><input name="Size" required="" type="radio" value="A5"/> A5 </label>
-<label class="choice"><input name="Size" type="radio" value="A4"/> A4 (most popular)</label>
-<label class="choice"><input name="Size" type="radio" value="A3"/> A3 </label>
+<label class="choice"><input name="Size" required="" type="radio" value="A5"/> A5 <span class="option-price">£125</span></label>
+<label class="choice"><input name="Size" type="radio" value="A4"/> A4 <span class="option-price">£175 · most popular</span></label>
+<label class="choice"><input name="Size" type="radio" value="A3"/> A3 <span class="option-price">£250</span></label>
 </div></div></div>
 <div class="field"><label for="include">Are there any <strong>special details</strong> that you would like to be included?</label><div class="control"><textarea id="include" name="Special details to include" placeholder='E.g. "The rose bush outside holds a lot of sentimental value."'></textarea></div></div>
 <div class="field"><label for="exclude">Is there anything you don’t want to be included?</label><div class="control"><textarea id="exclude" name="Details to leave out" placeholder='E.g. "Please take out the shed in front."'></textarea></div></div>
@@ -284,13 +298,13 @@ input[type="file"]{
 </div></div>
 <div class="field"><div class="legend">Would you like framing? <span class="req">*</span></div><div class="control options">
 <label class="choice"><input name="Framing" required="" type="radio" value="No — I can provide my own frame"/> No, I can provide my own frame.</label>
-<label class="choice"><input name="Framing" type="radio" value="Yes — please contact me about framing"/> Yes, I would like to talk about framing options.</label>
+<label class="choice"><input name="Framing" type="radio" value="Yes — framing from £45"/> Yes, I would like framing <span class="option-price">from £45</span></label>
 </div></div>
 <div class="field"><div class="legend">Would you like to include any add-ons?</div><div class="control options">
-<label class="choice"><input name="Add-ons[]" type="checkbox" value="Add my pet — from £25"/> Add my pet</label>
-<label class="choice"><input name="Add-ons[]" type="checkbox" value="Priority 1-week turnaround — from £35"/> Priority (1 week turnaround)</label>
-<label class="choice"><input name="Add-ons[]" type="checkbox" value="Digital copy — from £45"/> Digital copy</label>
-</div></div>
+<label class="choice"><input name="Add-ons[]" type="checkbox" value="Add my pet — £35"/> Add my pet <span class="option-price">+£35</span></label>
+<label class="choice"><input name="Add-ons[]" type="checkbox" value="Priority 1-week turnaround — £50"/> Priority (1 week turnaround) <span class="option-price">+£50</span></label>
+<label class="choice"><input name="Add-ons[]" type="checkbox" value="High-resolution digital copy — £35"/> High-resolution digital copy <span class="option-price">+£35</span></label>
+<p class="help">Digital copies are supplied for personal use. Commercial, stationery or reproduction use is quoted separately.</p>\n</div></div>
 <div class="field"><div class="legend">Pet photo</div><div class="control"><div class="upload"><input accept="image/*" name="Pet photo" type="file"/></div><p class="help">If you selected a pet add-on, upload a clear photo and include any details in the final comments.</p></div></div>
 <div class="field"><label for="message">Would you like me to include a short message anywhere?</label><div class="control"><textarea id="message" name="Short message on artwork" placeholder="Describe where it should go and what you would like it to say."></textarea></div></div>
 <div class="field"><div class="legend">Interested in using your illustration for wedding stationery or screen printing?</div><div class="control options">
