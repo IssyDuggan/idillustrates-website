@@ -1911,6 +1911,119 @@ html.site-ready body{visibility:visible}
   }
 }
 
+
+
+/* ABOUT HEADING — prevent descenders (e.g. the Y in MEMORY) from clipping */
+.about-band .about-portrait{
+  overflow:visible !important;
+}
+
+.about-band h2{
+  line-height:.96 !important;
+  padding-bottom:.10em !important;
+  overflow:visible !important;
+}
+
+.about-band h2 em{
+  line-height:inherit;
+}
+
+@media(max-width:820px){
+  .about-band h2{
+    font-size:clamp(44px,14vw,74px) !important;
+    line-height:.98 !important;
+    padding-bottom:.12em !important;
+  }
+}
+
+@media(max-width:420px){
+  .about-band h2{
+    font-size:clamp(40px,13.5vw,58px) !important;
+  }
+}
+
+
+/* ABOUT DESKTOP — make the heading panel match the portrait image height */
+@media(min-width:821px){
+  .about-band .inner{
+    align-items:start !important;
+    grid-template-rows:auto auto !important;
+  }
+
+  /* Let the image and copy participate directly in the parent grid.
+     This makes the left heading panel exactly the same row-height as the image. */
+  .about-band .about-content{
+    display:contents !important;
+  }
+
+  .about-band .about-content > img{
+    grid-column:2 !important;
+    grid-row:1 !important;
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    margin:0 !important;
+    align-self:start !important;
+  }
+
+  .about-band .about-portrait{
+    grid-column:1 !important;
+    grid-row:1 !important;
+    width:100% !important;
+    max-width:none !important;
+    height:100% !important;
+    min-height:100% !important;
+    align-self:stretch !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:space-between !important;
+    padding:0 !important;
+  }
+
+  .about-band .about-portrait .about-kicker{
+    flex:0 0 auto;
+  }
+
+  .about-band .about-portrait h2{
+    flex:0 0 auto;
+    margin-top:auto !important;
+    margin-bottom:0 !important;
+    padding-bottom:.12em !important;
+  }
+
+  .about-band .about-copy{
+    grid-column:2 !important;
+    grid-row:2 !important;
+    margin-top:clamp(24px,3vw,42px) !important;
+  }
+}
+
+@media(max-width:820px){
+  .about-band .about-content{
+    display:block !important;
+  }
+
+  .about-band .about-portrait{
+    height:auto !important;
+    min-height:0 !important;
+    display:block !important;
+  }
+}
+
+/* ABOUT LABEL — keep “About” firmly left-aligned */
+.about-band .about-kicker{
+  width:100% !important;
+  text-align:left !important;
+  align-self:flex-start !important;
+  justify-self:start !important;
+}
+
+@media(min-width:821px){
+  .about-band .about-portrait{
+    align-items:flex-start !important;
+    text-align:left !important;
+  }
+}
 </style>
 </head>
 <body>
