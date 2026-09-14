@@ -26,7 +26,17 @@ header{position:sticky;top:0;z-index:30;display:flex;justify-content:space-betwe
 .occasion-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #111;border-left:1px solid #111}.occasion{min-height:210px;padding:27px;border-right:1px solid #111;border-bottom:1px solid #111;display:flex;flex-direction:column;justify-content:space-between}.occasion span{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}.occasion strong{font-family:var(--serif);font-size:32px;font-weight:400;line-height:1}
 .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,76px)}.price-box{border-top:1px solid #111;padding-top:20px}.price-box h3{font-family:var(--serif);font-size:42px;font-weight:400;margin:0 0 10px}.price-box>p{font-size:12px;line-height:1.6;color:var(--muted);min-height:44px}.price-row{display:grid;grid-template-columns:1fr auto;gap:20px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline}.price-row strong{font-size:13px;font-weight:500}.price-row b{font-family:var(--serif);font-size:27px;font-weight:400}.popular{font-size:8px;text-transform:uppercase;letter-spacing:.12em;margin-left:8px;color:var(--muted)}.included{margin:24px 0 0;padding:0;list-style:none;font-size:11px;line-height:1.8;color:var(--muted)}.included li:before{content:' /  ';color:#111}
 .process{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #111}.step{padding:24px 24px 26px 0;border-bottom:1px solid #111}.step .num{font-size:9px;letter-spacing:.13em;color:var(--muted)}.step h3{font-family:var(--serif);font-size:29px;font-weight:400;margin:44px 0 8px}.step p{font-size:11px;line-height:1.6;color:var(--muted);margin:0;max-width:250px}
-.quote{max-width:1080px;margin:0 auto;padding:clamp(28px,4vw,58px) 0}.quote .eyebrow{margin-bottom:clamp(24px,3vw,42px)}.quote blockquote{font-family:var(--sans);font-size:clamp(24px,3vw,46px);font-weight:500;line-height:1.18;letter-spacing:-.035em;margin:0}.quote blockquote p{font:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0 0 1.05em}.quote blockquote p:last-child{margin-bottom:0}.quote .review-close{margin-top:clamp(28px,3vw,44px);font-size:11px;line-height:1.6;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+
+.reviews{max-width:980px;margin:0 auto}
+.reviews-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:24px}
+.reviews-head h2{margin:0;font-family:var(--sans);font-size:clamp(42px,6vw,82px);line-height:.9;letter-spacing:-.045em}
+.review-list{border-top:1px solid var(--ink)}
+.review-item{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:24px 0;border-bottom:1px solid var(--line)}
+.review-avatar{width:40px;height:40px;border:1px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:600;letter-spacing:.08em}
+.review-body p{margin:0 0 10px;font-size:15px;line-height:1.6;max-width:760px}
+.review-name{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.review-note{margin-top:18px;font-size:10px;line-height:1.55;color:var(--muted)}
+
 .faq{max-width:920px}.faq details{border-top:1px solid var(--line);padding:20px 0}.faq details:last-child{border-bottom:1px solid var(--line)}.faq summary{cursor:pointer;font-family:var(--serif);font-size:25px}.faq details p{font-size:12px;line-height:1.7;color:var(--muted);max-width:760px}
 .final{background:#111;color:#f5f4f2;padding:clamp(75px,9vw,140px) 0}.final-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:7vw;align-items:end}.final h2{font-size:clamp(60px,9vw,145px);line-height:.78;letter-spacing:-.055em;margin:0}.final h2 em{display:block;font-family:var(--serif);font-weight:400}.final p{font-size:16px;line-height:1.6;color:#d8d4cc;margin:0 0 24px}.final .button{border-color:#f5f4f2}.final .button.dark{background:#f5f4f2;color:#111}
 footer{padding:28px var(--pad);display:flex;justify-content:space-between;gap:20px;font-size:9px;text-transform:uppercase;letter-spacing:.13em}
@@ -69,17 +79,53 @@ footer{padding:28px var(--pad);display:flex;justify-content:space-between;gap:20
 <h3>House Portraits</h3><div class="price-row"><strong>A5 original</strong><b>£175</b></div><div class="price-row"><strong>A4 original <span class="popular">Most popular</span></strong><b>£250</b></div><div class="price-row"><strong>A3 original</strong><b>£325</b></div></div>
 <div class="price-box">
     <!-- <div class="eyebrow">Wedding venues</div> -->
-    <h3>Wedding Venue Illustration</h3><div class="price-row"><strong>A5 original</strong><b>£195</b></div><div class="price-row"><strong>A4 original <span class="popular">Most popular</span></strong><b>£275</b></div><div class="price-row"><strong>A3 original</strong><b>£350</b></div></div>
+    <h3>Wedding Venue</h3><div class="price-row"><strong>A5 original</strong><b>£195</b></div><div class="price-row"><strong>A4 original <span class="popular">Most popular</span></strong><b>£275</b></div><div class="price-row"><strong>A3 original</strong><b>£350</b></div></div>
 </div></div></section>
 
 <!-- <section class="section rule"><div class="wrap"><div class="section-head"><h2>HOW IT<br><em>WORKS.</em></h2><p>Four simple steps.</p></div><div class="process"><div class="step"><div class="num">01</div><h3>Choose</h3><p>Choose your size and tell me the place.</p></div><div class="step"><div class="num">02</div><h3>Upload</h3><p>Upload your reference photos.</p></div><div class="step"><div class="num">03</div><h3>I draw</h3><p>I draw your original by hand.</p></div><div class="step"><div class="num">04</div><h3>You keep it</h3><p>Your signed original is posted to you.</p></div></div></div></section> -->
 
-<section class="section rule"><div class="wrap"><div class="quote"><div class="eyebrow">From a commission client</div><blockquote>
-<p>“I recently commissioned a bespoke illustration of a house that holds an incredible amount of meaning for my friend and her family. Because the house is so central to their lives, I imagined it could make a truly special gift for a very difficult-to-buy-for friend.”</p>
-<p>“Issy helped me explain what I wanted from the piece, understood it, and turned it into reality in a way that was so much better than I could even have imagined, from the tiniest detail to the overall feeling I wanted to convey.”</p>
-<p>“Her interpretation captured not only the house itself perfectly but somehow made it feel like their home, which was exactly what I wanted when I first thought of it as a gift.”</p>
-<p>“I was really hoping for that ‘wow’ moment when I gave it to my friend, and her reaction was exactly that. A huge wow. She cried happy tears involuntarily.”</p>
-</blockquote><div class="review-close">A bespoke house commission, given as a birthday gift</div></div></div></section>
+<section class="section rule" id="reviews">
+<div class="wrap">
+<div class="reviews">
+<div class="reviews-head">
+<div>
+<div class="eyebrow">Commission feedback</div>
+<h2>KIND WORDS.</h2>
+</div>
+</div>
+
+<div class="review-list">
+
+<!-- REVIEW ENTRY 1 -->
+<article class="review-item">
+<div class="review-avatar" aria-hidden="true">C</div>
+<div class="review-body">
+<p>“Her interpretation captured not only the house itself perfectly but somehow made it feel like their home. I was really hoping for that ‘wow’ moment when I gave it to my friend, and her reaction was exactly that. A huge wow. She cried happy tears.”</p>
+<div class="review-name">Commission client</div>
+</div>
+</article>
+
+<!--
+ADD NEW REVIEWS DIRECTLY ABOVE THIS COMMENT.
+
+Copy this block for each new review:
+
+<article class="review-item">
+  <div class="review-avatar" aria-hidden="true">A</div>
+  <div class="review-body">
+    <p>“Paste one short quote here.”</p>
+    <div class="review-name">Client name</div>
+  </div>
+</article>
+
+Change the letter inside review-avatar to the client's first initial.
+Keep each entry to one quote and one name.
+-->
+
+</div>
+</div>
+</div>
+</section>
 
 <section class="final"><div class="wrap final-grid"><h2>READY TO<br><em>START?</em></h2><div>
     <p>Choose your size and upload your photos.</p>
