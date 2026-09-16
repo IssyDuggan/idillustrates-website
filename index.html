@@ -117,14 +117,13 @@ footer{border-top:1px solid var(--line);padding:20px var(--pad);display:flex;jus
   .live-row{font-size:10.5px}
 }
 
+
+/* CONSISTENT SITE HEADER */
+header{display:flex;align-items:center;justify-content:space-between}.nav{order:1;display:flex;align-items:center;gap:26px;font-size:11px;height:auto}.id-home{order:2;display:inline-flex;align-items:center;justify-content:center;border:0;background:none;padding:0;flex:0 0 auto}.id-home img{display:block;width:30px;height:30px;object-fit:contain}.menu{order:1;display:none;border:0;background:none;padding:0;font:inherit;font-size:11px;color:inherit;cursor:pointer}.nav a:hover{opacity:.6}@media(max-width:800px){header{flex-wrap:wrap}.nav{display:none}.menu{display:block}.id-home{margin-left:auto}header.open .nav{display:flex;order:3;width:100%;flex-direction:column;align-items:flex-start;padding-top:20px}header.open .id-home{order:2}}
 </style>
 </head>
 <body>
-<header>
-  
-  <!-- <a class="brand" href="index.html">ISSY DUGGAN</a> -->
-  <img src="assets/logos/ID-logo.png" alt="ID Illustrates logo" href='index.html'style="width: 30px; height: 30px;">
-  <nav class="nav"><a href="commissions.html">Original artwork</a><a href="index.html#brand-collaborations">Collaborations</a><a href="workshops.html">Workshops</a><a href="https://printclublondon.com/artist/issy-duggan/" target="_blank" rel="noopener">Gallery</a><a href="index.html#contact">About</a><a href="mailto:info@idillustrates.com">Contact</a></nav><button class="menu" type="button">Menu</button></header>
+<header><button class="menu" type="button" aria-expanded="false">Menu</button><nav class="nav"><a href="commissions.html">Original artwork</a><a href="index.html#brand-collaborations">Collaborations</a><a href="workshops.html">Workshops</a><a href="https://printclublondon.com/artist/issy-duggan/" target="_blank" rel="noopener">Gallery</a><a href="index.html#contact">About</a><a href="mailto:info@idillustrates.com">Contact</a></nav><a class="id-home" href="index.html" aria-label="ID Illustrates home"><img src="assets/logos/ID-logo.png" alt="ID Illustrates logo"></a></header>
 <main>
     <div class="hero-image" ><img alt="Live screen printing by Issy Duggan" src="assets/images/hero-koncept-2.png"/>
 <section class="hero"><div class="wrap"><div class="hero-top">
@@ -155,11 +154,9 @@ footer{border-top:1px solid var(--line);padding:20px var(--pad);display:flex;jus
 </main>
 <footer><span>© ID Illustrates 2026</span><span>Artist / Illustrator / Printmaker</span><a href="https://www.instagram.com/id.illustrates/" rel="noopener" target="_blank">Instagram</a></footer>
 <script>
-const b=document.querySelector('.menu'),h=document.querySelector('header');
-b.addEventListener('click',()=>{h.classList.toggle('open');b.textContent=h.classList.contains('open')?'Close':'Menu'});
 const track=document.querySelector('.carousel-track'),slides=[...document.querySelectorAll('.carousel-slide')],count=document.querySelector('.carousel-count');let i=0;
 function go(n){i=(n+slides.length)%slides.length;track.style.transform=`translateX(-${i*100}%)`;count.textContent=String(i+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0')}
 document.querySelector('.carousel-prev').addEventListener('click',()=>go(i-1));
 document.querySelector('.carousel-next').addEventListener('click',()=>go(i+1));
 </script>
-</body></html>
+<script>(()=>{const b=document.querySelector('.menu'),h=document.querySelector('header');if(!b||!h)return;b.addEventListener('click',()=>{const open=h.classList.toggle('open');b.textContent=open?'Close':'Menu';b.setAttribute('aria-expanded',String(open))})})();</script></body></html>
