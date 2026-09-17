@@ -26,7 +26,7 @@ footer{border-top:1px solid var(--line);padding:20px var(--pad);display:flex;jus
 .carousel-viewport{overflow:hidden}
 .carousel-track{display:flex;transition:transform .45s ease;will-change:transform}
 .carousel-slide{min-width:100%;display:grid;grid-template-columns:1.4fr .6fr;gap:clamp(20px,4vw,64px);align-items:end}
-.carousel-slide img{width:100%;height:min(62vw,780px);object-fit:cover;background:#fff}
+.carousel-slide img{width:100%;height:min(58vw,760px);aspect-ratio:4/3;object-fit:cover;background:#fff}
 .carousel-slide .contain{object-fit:contain;padding:clamp(28px,5vw,80px)}
 .carousel-meta{padding-bottom:4px}.carousel-meta .num{display:block;margin-bottom:18px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .carousel-meta h3{margin:0 0 8px;font-size:clamp(28px,3.8vw,58px);font-weight:500;letter-spacing:-.045em}
@@ -69,7 +69,7 @@ footer{border-top:1px solid var(--line);padding:20px var(--pad);display:flex;jus
 #brand-collaborations .section-head h2{max-width:950px;font-size:clamp(42px,5.4vw,82px);line-height:.9}
 .project-carousel{margin-top:0}
 .carousel-slide{grid-template-columns:minmax(0,1.5fr) minmax(260px,.5fr);gap:clamp(30px,5vw,90px)}
-.carousel-slide img{height:min(58vw,760px)}
+.carousel-slide img{height:auto;aspect-ratio:4/3;object-fit:cover}
 .carousel-meta{padding:0 0 8px}
 .carousel-meta h3{font-size:clamp(30px,3.5vw,56px)}
 .carousel-controls{margin-top:20px}
@@ -101,7 +101,7 @@ footer{border-top:1px solid var(--line);padding:20px var(--pad);display:flex;jus
   #brand-collaborations .section-head .right{margin-top:12px;text-align:left}
   #brand-collaborations .section-head h2{font-size:clamp(38px,11vw,64px);overflow-wrap:anywhere}
   .carousel-slide{grid-template-columns:1fr;gap:0}
-  .carousel-slide img{height:auto;aspect-ratio:auto;object-fit:contain}
+  .carousel-slide img{height:auto;aspect-ratio:4/3;object-fit:cover}
   .carousel-meta{padding-top:18px}
   .live-row{grid-template-columns:56px 1fr;padding:14px 0}
   .about{grid-template-columns:1fr;gap:30px}
@@ -134,14 +134,14 @@ header{display:flex;align-items:center;justify-content:space-between}.nav{order:
 
 </div></section>
 
-  <section class="section" id="commissions"><div class="wrap commission-feature"><div class="commission-feature-image"><img alt="Bespoke place commission by ID Illustrates" src="assets/images/commission-emil.png"/></div><div class="commission-feature-copy"><div class="small">Commissions / original artwork</div><h2>YOUR PLACE<br/>ON PAPER</h2><p>Original line drawings of homes, wedding venues, favourite buildings and significant places.</p><a class="link" href="commissions.html">View commissions →</a></div></div></section>
+  <section class="section" id="commissions"><div class="wrap commission-feature"><div class="commission-feature-image"><img alt="Bespoke place commission by ID Illustrates" src="assets/images/commission-emil.png"/></div><div class="commission-feature-copy"><div class="small">Commissions / original artwork</div><h2>YOUR PLACE<br/>ON PAPER</h2><p>Original line drawings of homes, wedding venues and significant places.</p><a class="link" href="commissions.html">View commissions →</a></div></div></section>
 
 <section class="section" id="brand-collaborations"><div class="wrap"><div class="section-head"><h2>BRAND COLLABORATIONS</h2><div class="right">Selected work / 2024—26</div></div>
 <div class="project-carousel" aria-label="Selected brand collaborations carousel">
   <div class="carousel-viewport"><div class="carousel-track">
     <article class="carousel-slide"><img alt="Allpress Espresso illustrated packaging" src="assets/images/allpress-packaging-1.png" /><div class="carousel-meta"><span class="num">01 / Brand collaboration</span><h3>Allpress Espresso</h3><p>Packaging / illustration</p></div></article>
-    <article class="carousel-slide"><img alt="Koncept Coffee merchandise and live print work" src="assets/images/koncept-merch-2.png"/><div class="carousel-meta"><span class="num">02 / Brand collaboration</span><h3>Koncept Coffee</h3><p>Merch / illustration / live print</p></div></article>
-    <article class="carousel-slide"><img alt="Beyond Nine branding project" class="contain" src="assets/images/workshops.png"/><div class="carousel-meta"><span class="num">03 / Brand collaboration</span><h3>Beyond Nine</h3><p>Bespoke printmaking workshop </p></div></article>
+    <article class="carousel-slide"><img alt="Koncept Coffee merchandise and live print work" src="assets/images/koncept-merch-3.png"/><div class="carousel-meta"><span class="num">02 / Brand collaboration</span><h3>Koncept Coffee</h3><p>Merch / illustration / live print</p></div></article>
+    <article class="carousel-slide"><img alt="Beyond Nine branding project" src="assets/images/workshops.png"/><div class="carousel-meta"><span class="num">03 / Brand collaboration</span><h3>Beyond Nine</h3><p>Bespoke printmaking workshop </p></div></article>
   </div></div>
   <div class="carousel-controls"><span class="carousel-count">01 / 03</span><div class="carousel-buttons"><button class="carousel-prev" type="button" aria-label="Previous project">←</button><button class="carousel-next" type="button" aria-label="Next project">→</button></div></div>
 </div>
