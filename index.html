@@ -147,6 +147,48 @@ header .nav{order:2;margin-left:auto;color:#fff}.menu{order:2!important;color:#f
     margin-left: auto;
     text-align: right;
 }
+
+/* BORDERLESS SECTION PASS */
+.section,#brand-collaborations,#commissions,#live-print,#contact,#info,footer,
+.live-list,.live-row,.carousel-controls,.media-carousel-controls{
+  border-top:0!important;
+  border-bottom:0!important;
+}
+
+
+/* MOBILE BRAND COLLABORATIONS HEADING FIX */
+@media (max-width:800px){
+  #brand-collaborations .section-head h2{
+    font-size:clamp(30px,9.2vw,52px)!important;
+    line-height:.92;
+    letter-spacing:-.055em;
+    max-width:100%;
+    overflow-wrap:normal;
+    word-break:normal;
+  }
+}
+@media (max-width:420px){
+  #brand-collaborations .section-head h2{
+    font-size:clamp(28px,8.8vw,38px)!important;
+    letter-spacing:-.06em;
+  }
+}
+
+
+/* SMALLER CAROUSELS */
+.project-carousel,
+.media-carousel{
+  width:min(100%,1200px);
+  margin-left:auto;
+  margin-right:auto;
+}
+@media(max-width:800px){
+  .project-carousel,
+  .media-carousel{
+    width:88%;
+  }
+}
+
 </style>
 </head>
 <body>
