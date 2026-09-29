@@ -17,10 +17,17 @@ footer{border-top:1px solid var(--line);padding:20px var(--pad);display:flex;jus
 
 /* CONSISTENT SITE HEADER */
 header{display:flex;align-items:center;justify-content:space-between}.nav{order:1;display:flex;align-items:center;gap:26px;font-size:11px;height:auto}.id-home{order:2;display:inline-flex;align-items:center;justify-content:center;border:0;background:none;padding:0;flex:0 0 auto}.id-home img{display:block;width:30px;height:30px;object-fit:contain}.menu{order:1;display:none;border:0;background:none;padding:0;font:inherit;font-size:11px;color:inherit;cursor:pointer}.nav a:hover{opacity:.6}@media(max-width:800px){header{flex-wrap:wrap}.nav{display:none}.menu{display:block}.id-home{margin-left:auto}header.open .nav{display:flex;order:3;width:100%;flex-direction:column;align-items:flex-start;padding-top:20px}header.open .id-home{order:2}}
+
+/* SITE HEADER: logo left / navigation right */
+header{display:flex;align-items:center;justify-content:space-between}
+.id-home{order:1!important;margin:0 auto 0 0!important}
+.nav{order:2!important;margin-left:auto!important}
+.menu{order:2!important;margin-left:auto!important}
+@media(max-width:800px){header{flex-wrap:wrap}.id-home{order:1!important;margin:0 auto 0 0!important}.menu{display:block;order:2!important;margin-left:auto!important}.nav{display:none}.open .nav,header.open .nav{display:flex;order:3!important;width:100%;flex-direction:column;align-items:flex-start;padding-top:20px;margin-left:0!important}}
 </style>
 </head>
 <body>
-<header><button class="menu" type="button" aria-expanded="false">Menu</button><nav class="nav"><a href="commissions.html">Original artwork</a><a href="index.html#brand-collaborations">Collaborations</a><a href="workshops.html">Workshops</a><a href="https://printclublondon.com/artist/issy-duggan/" target="_blank" rel="noopener">Gallery</a><a href="index.html#contact">About</a><a href="mailto:info@idillustrates.com">Contact</a></nav><a class="id-home" href="index.html" aria-label="ID Illustrates home"><img src="assets/logos/ID-logo.png" alt="ID Illustrates logo"></a></header>
+<header><a class="id-home" href="index.html" aria-label="ID Illustrates home"><img src="assets/logos/ID-logo.png" alt="ID Illustrates logo"></a><button class="menu" type="button" aria-expanded="false">Menu</button><nav class="nav"><a href="commissions.html">Original artwork</a><a href="index.html#brand-collaborations">Collaborations</a><a href="workshops.html">Workshops</a><a href="https://printclublondon.com/artist/issy-duggan/" target="_blank" rel="noopener">Gallery</a><a href="index.html#contact">About</a><a href="mailto:info@idillustrates.com">Contact</a></nav></header>
 <main>
 <section class="hero"><div class="wrap"><div class="hero-row"><h1>PRINTMAKING<br/>WORKSHOPS</h1><div class="hero-side"><p>Bespoke creative sessions for team days and brand events.</p><a class="link" href="#contact">Enquire →</a></div></div><div class="hero-image"><img alt="ID Illustrates printmaking workshop" src="assets/images/workshops.png"/></div></div></section>
 <section class="info"><div class="wrap info-grid"><div><div class="small">Workshops / live print</div><h2>MADE FOR THE ROOM.</h2></div><div class="copy"><p>Each workshop is shaped around the group and the event. Sessions can combine illustration, lino printing and live screen printing, with everyone making something to take away.</p><p style="margin:20px 0 0;font-size:13px"></p><p style="margin-top:24px;font-size:11px;color:var(--muted)">Recent workshop: Beyond Nine / bespoke illustration, lino printing and live print.</p></div></div></section>

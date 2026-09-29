@@ -23,7 +23,7 @@ header{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-
 footer{border-top:1px solid var(--line);padding:20px var(--pad);display:flex;justify-content:space-between;gap:20px;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
 
 .project-carousel{position:relative}
-.carousel-viewport{overflow:hidden}
+.carousel-viewport{overflow:hidden;touch-action:pan-y;cursor:grab}.carousel-viewport:active{cursor:grabbing}
 .carousel-track{display:flex;transition:transform .45s ease;will-change:transform}
 .carousel-slide{min-width:100%;display:grid;grid-template-columns:1.4fr .6fr;gap:clamp(20px,4vw,64px);align-items:end}
 .carousel-slide img{width:100%;height:min(58vw,760px);aspect-ratio:4/3;object-fit:cover;background:#fff}
@@ -120,37 +120,74 @@ footer{border-top:1px solid var(--line);padding:20px var(--pad);display:flex;jus
 
 /* CONSISTENT SITE HEADER */
 header{display:flex;align-items:center;justify-content:space-between}.nav{order:1;display:flex;align-items:center;gap:26px;font-size:11px;height:auto}.id-home{order:2;display:inline-flex;align-items:center;justify-content:center;border:0;background:none;padding:0;flex:0 0 auto}.id-home img{display:block;width:30px;height:30px;object-fit:contain}.menu{order:1;display:none;border:0;background:none;padding:0;font:inherit;font-size:11px;color:inherit;cursor:pointer}.nav a:hover{opacity:.6}@media(max-width:800px){header{flex-wrap:wrap}.nav{display:none}.menu{display:block}.id-home{margin-left:auto}header.open .nav{display:flex;order:3;width:100%;flex-direction:column;align-items:flex-start;padding-top:20px}header.open .id-home{order:2}}
+
+
+/* 2026 HOMEPAGE REFRESH */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&display=swap');
+:root{--display:"Barlow Condensed","Arial Narrow",Impact,sans-serif}
+body{overflow-x:hidden}
+header{position:absolute;top:0;left:0;right:0;z-index:50;background:transparent!important;border:0!important;backdrop-filter:none!important;color:#fff;padding:22px var(--pad)}
+header .id-home{order:1;margin:0 auto 0 0!important}.id-home img{width:38px!important;height:38px!important;filter:brightness(0) invert(1)}
+header .nav{order:2;margin-left:auto;color:#fff}.menu{order:2!important;color:#fff!important}
+.hero-image.hero-cover{position:relative;width:100%;height:100svh;min-height:620px;overflow:hidden;background:#111}
+.hero-image.hero-cover img{width:100%;height:100%;object-fit:cover}
+.hero-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.34) 0%,rgba(0,0,0,.04) 38%,rgba(0,0,0,.16) 100%);pointer-events:none}
+.hero-overlay{position:absolute;z-index:2;left:var(--pad);right:var(--pad);bottom:clamp(28px,5vw,70px);display:flex;justify-content:space-between;align-items:end;gap:30px;color:#fff}
+.hero-overlay h1,.display-heading{font-family:var(--sans);font-weight:500;text-transform:uppercase;letter-spacing:-.07em;line-height:.82}
+.hero-overlay h1{font-size:clamp(64px,11vw,180px);margin:0;max-width:1100px}
+.hero-overlay .hero-link{color:#fff;border-color:#fff;white-space:nowrap}
+.section-head h2,.commission-feature-copy h2,.about-copy h2,.carousel-meta h3{font-family:var(--sans);font-weight:500;letter-spacing:-.05em}
+#brand-collaborations{border-top:0}
+.media-carousel{position:relative;overflow:hidden;touch-action:pan-y;cursor:grab}.media-carousel:active{cursor:grabbing}.media-carousel-track{display:flex;transition:transform .65s cubic-bezier(.22,.61,.36,1);will-change:transform}.media-carousel-slide{min-width:100%}.media-carousel-slide img{width:100%;height:min(70vw,900px);object-fit:contain;background:#f5f4f2}.media-carousel.live .media-carousel-slide img{object-fit:cover;aspect-ratio:16/10;height:auto;background:#111}
+.media-carousel-controls{display:flex;justify-content:space-between;align-items:center;padding-top:12px;margin-top:12px;border-top:1px solid var(--line)}.media-carousel-controls span{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}.media-carousel-controls button{width:34px;height:34px;border:1px solid var(--line);background:#fff;cursor:pointer}
+#commissions .section-head,#live-print .section-head{margin-bottom:clamp(28px,4vw,54px)}
+#live-print .section-head .right{max-width:390px}
+@media(max-width:800px){header{padding:18px}.id-home img{width:32px!important;height:32px!important}header.open{background:rgba(0,0,0,.82)!important;color:#fff}.open .nav{color:#fff}.hero-image.hero-cover{height:88svh;min-height:560px}.hero-overlay{left:18px;right:18px;bottom:24px;display:block}.hero-overlay h1{font-size:clamp(58px,20vw,104px)}.hero-overlay .hero-link{margin-top:24px}.media-carousel-slide img{height:auto;aspect-ratio:4/3}.section-head h2{font-size:clamp(48px,14vw,78px)!important}}
+
 </style>
 </head>
 <body>
-<header><button class="menu" type="button" aria-expanded="false">Menu</button><nav class="nav"><a href="commissions.html">Original artwork</a><a href="index.html#brand-collaborations">Collaborations</a><a href="workshops.html">Workshops</a><a href="https://printclublondon.com/artist/issy-duggan/" target="_blank" rel="noopener">Gallery</a><a href="index.html#contact">About</a><a href="mailto:info@idillustrates.com">Contact</a></nav><a class="id-home" href="index.html" aria-label="ID Illustrates home"><img src="assets/logos/ID-logo.png" alt="ID Illustrates logo"></a></header>
+<header><a class="id-home" href="index.html" aria-label="ID Illustrates home"><img src="assets/logos/ID-logo.png" alt="ID Illustrates logo"></a><button class="menu" type="button" aria-expanded="false">Menu</button><nav class="nav"><a href="commissions.html">Original artwork</a><a href="#brand-collaborations">Collaborations</a><a href="workshops.html">Workshops</a><a href="https://printclublondon.com/artist/issy-duggan/" target="_blank" rel="noopener">Gallery</a><a href="#contact">About</a><a href="mailto:info@idillustrates.com">Contact</a></nav></header>
 <main>
-    <div class="hero-image" ><img alt="Live screen printing by Issy Duggan" src="assets/images/hero-koncept-2.png"/>
-<section class="hero"><div class="wrap"><div class="hero-top">
-  
+  <div class="hero-image hero-cover">
+    <img alt="Live screen printing by Issy Duggan" src="assets/images/hero-koncept-2.png"/>
+    <div class="hero-overlay"><h1>Illustration<br>&amp; live print</h1><a class="link hero-link" href="#live-print">View work ↓</a></div>
+  </div>
 
-  
-  <p></p><a class="link" href="#live-list">View live print ↓</a>
+  <section class="section" id="brand-collaborations"><div class="wrap"><div class="section-head"><h2>BRAND COLLABORATIONS</h2><div class="right">Selected work / 2024—26</div></div>
+    <div class="project-carousel" aria-label="Selected brand collaborations carousel"><div class="carousel-viewport"><div class="carousel-track">
+      <article class="carousel-slide"><img alt="Allpress Espresso illustrated packaging" src="assets/images/allpress-packaging-1.png"/><div class="carousel-meta"><span class="num">01 / Brand collaboration</span><h3>Allpress Espresso</h3><p>Packaging / illustration</p></div></article>
+      <article class="carousel-slide"><img alt="Koncept Coffee merchandise and live print work" src="assets/images/koncept-merch-3.png"/><div class="carousel-meta"><span class="num">02 / Brand collaboration</span><h3>Koncept Coffee</h3><p>Merch / illustration / live print</p></div></article>
+      <article class="carousel-slide"><img alt="Beyond Nine branding project" src="assets/images/workshops.png"/><div class="carousel-meta"><span class="num">03 / Brand collaboration</span><h3>Beyond Nine</h3><p>Bespoke printmaking workshop</p></div></article>
+    </div></div><div class="carousel-controls"><span class="carousel-count">01 / 03</span><div class="carousel-buttons"><button class="carousel-prev" type="button" aria-label="Previous project">←</button><button class="carousel-next" type="button" aria-label="Next project">→</button></div></div></div>
+  </div></section>
 
-</div></section>
+  <section class="section" id="commissions"><div class="wrap"><div class="section-head"><h2>COMMISSIONS</h2><div class="right">Original drawings / homes / venues / meaningful places</div></div>
+    <div class="media-carousel commissions-carousel" data-autoplay="4200" aria-label="Commission artwork carousel"><div class="media-carousel-track">
+      <div class="media-carousel-slide"><img src="assets/images/commission-emil.png" alt="Bespoke place commission"></div>
+      <div class="media-carousel-slide"><img src="assets/images/commission-sarah.png" alt="Wedding venue commission"></div>
+      <div class="media-carousel-slide"><img src="assets/images/commission-sammy.png" alt="House portrait commission"></div>
+      <div class="media-carousel-slide"><img src="assets/images/commission-amy-tom.png" alt="House portrait commission"></div>
+      <div class="media-carousel-slide"><img src="assets/images/commission-shanae-a4.png" alt="Place illustration commission"></div>
+      <div class="media-carousel-slide"><img src="assets/images/commission-hannah-a5.png" alt="Wedding gift house portrait"></div>
+      <div class="media-carousel-slide"><img src="assets/images/commission-jon.png" alt="Anniversary gift illustration"></div>
+    </div><div class="media-carousel-controls"><span class="media-count">01 / 07</span><div><button class="media-prev" aria-label="Previous commission">←</button><button class="media-next" aria-label="Next commission">→</button></div></div></div>
+    <div class="archive-links"><a class="link" href="commissions.html">View commissions →</a><a class="link" href="commission-form.html">Start a commission →</a></div>
+  </div></section>
 
-  <section class="section" id="commissions"><div class="wrap commission-feature"><div class="commission-feature-image"><img alt="Bespoke place commission by ID Illustrates" src="assets/images/commission-emil.png"/></div><div class="commission-feature-copy"><div class="small">Commissions / original artwork</div><h2>YOUR PLACE<br/>ON PAPER</h2><p>Original line drawings of homes, wedding venues and significant places.</p><a class="link" href="commissions.html">View commissions →</a></div></div></section>
-
-<section class="section" id="brand-collaborations"><div class="wrap"><div class="section-head"><h2>BRAND COLLABORATIONS</h2><div class="right">Selected work / 2024—26</div></div>
-<div class="project-carousel" aria-label="Selected brand collaborations carousel">
-  <div class="carousel-viewport"><div class="carousel-track">
-    <article class="carousel-slide"><img alt="Allpress Espresso illustrated packaging" src="assets/images/allpress-packaging-1.png" /><div class="carousel-meta"><span class="num">01 / Brand collaboration</span><h3>Allpress Espresso</h3><p>Packaging / illustration</p></div></article>
-    <article class="carousel-slide"><img alt="Koncept Coffee merchandise and live print work" src="assets/images/koncept-merch-3.png"/><div class="carousel-meta"><span class="num">02 / Brand collaboration</span><h3>Koncept Coffee</h3><p>Merch / illustration / live print</p></div></article>
-    <article class="carousel-slide"><img alt="Beyond Nine branding project" src="assets/images/workshops.png"/><div class="carousel-meta"><span class="num">03 / Brand collaboration</span><h3>Beyond Nine</h3><p>Bespoke printmaking workshop </p></div></article>
-  </div></div>
-  <div class="carousel-controls"><span class="carousel-count">01 / 03</span><div class="carousel-buttons"><button class="carousel-prev" type="button" aria-label="Previous project">←</button><button class="carousel-next" type="button" aria-label="Next project">→</button></div></div>
-</div>
-
- 
-
-
-<div class="live-list" id="live-list"><div class="hero-image" ><img alt="Live screen printing by Issy Duggan" src="assets/images/live-print-collage.png"/><div class="small" style="padding:14px 0 4px">Live print / selected events</div><div class="live-row"><span>2026</span><strong>The Sixth Space x André Drean Lopes × Custard Shop Official</strong><em>Live t-shirt printing </em></div><div class="live-row"><span>2026</span><strong>COLORS × Levi’s</strong><em>Live printing on t-shirts and tote bags</em></div><div class="live-row"><span>2026</span><strong>Koncept Coffee</strong><em>Bespoke illustration / live printing on t-shirts and tote bags / launch event</em></div><div class="live-row"><span>2026</span><strong>Beyond Nine</strong><em>Bespoke printmaking workshop / bespoke illustration / team day</em></div><div class="live-row"><span>2026</span><strong>Landor</strong><em>Live tote bag printing / team day</em></div><div class="live-row"><span>2026</span><strong>Metro / IRL x URL </strong><em>Live tote bag printing / launch event</em></div><div class="live-row"><span>2026</span><strong>Starbucks HQ</strong><em>Live tote bag printing / team day</em></div><div class="live-row"><span>2025</span><strong>Atelier Three / Redchurch Street</strong><em>Live tote bag printing</em></div><div class="live-row"><span>2024</span><strong>Allpress Espresso</strong><em>Packaging illustration</em></div></div>
-<div class="archive-links"><a class="link" href="mailto:info@idillustrates.com">Commercial enquiries →</a></div></div></section><section class="section" id="contact"><div class="wrap about"><img alt="Issy Duggan, artist and illustrator" src="assets/images/about-issy-new.png"/><div class="about-copy"><p>Bristol-born artist, Issy Duggan explores place through illustration and print. Trained as a cartographer, she creates work that connects people to the places and stories around them.</p>
+  <section class="section" id="live-print"><div class="wrap"><div class="section-head"><h2>LIVE PRINTING</h2><div class="right"></div></div>
+    <div class="media-carousel live" data-autoplay="3600" aria-label="Live printing image carousel"><div class="media-carousel-track">
+      <div class="media-carousel-slide"><img src="assets/images/IMG_3330.JPG" alt="Live printing event"></div>
+      <div class="media-carousel-slide"><img src="assets/images/190926 SIXTH SPACE-149.JPEG" alt="Live screen printing"></div>
+      <div class="media-carousel-slide"><img src="assets/images/Untitled design - 3.PNG" alt="Live print merchandise"></div>
+           <div class="media-carousel-slide"><img src="assets/images/190926 SIXTH SPACE-67.JPEG" alt="Live print merchandise"></div>
+      <div class="media-carousel-slide"><img src="assets/images/ba97ade3-fb8d-49bf-ac78-60a2470077f9.jpg" alt="Live print merchandise"></div>
+      <!-- Add more slides by duplicating the line above and changing src to assets/images/YOUR-FILE.jpg -->
+    </div><div class="media-carousel-controls"><span class="media-count">01 / 03</span><div><button class="media-prev" aria-label="Previous live print image">←</button><button class="media-next" aria-label="Next live print image">→</button></div></div></div>
+    <div class="live-list"><div class="small" style="padding:14px 0 4px">Live print / selected events</div><div class="live-row"><span>2026</span><strong>The Sixth Space x André Drean Lopes × Custard Shop Official</strong><em>Live t-shirt printing</em></div><div class="live-row"><span>2026</span><strong>COLORS × Levi’s</strong><em>Live printing on t-shirts and tote bags</em></div><div class="live-row"><span>2026</span><strong>Koncept Coffee</strong><em>Bespoke illustration / live printing / launch event</em></div><div class="live-row"><span>2026</span><strong>Beyond Nine</strong><em>Bespoke printmaking workshop / team day</em></div><div class="live-row"><span>2026</span><strong>Landor</strong><em>Live tote bag printing / team day</em></div></div>
+    <div class="archive-links"><a class="link" href="mailto:info@idillustrates.com">Commercial enquiries →</a></div>
+  </div></section>
+<section class="section" id="contact"><div class="wrap about"><img alt="Issy Duggan, artist and illustrator" src="assets/images/about-issy-new.png"/><div class="about-copy"><p>Bristol-born artist, Issy Duggan explores place through illustration and print. Trained as a cartographer, she creates work that connects people to the places and stories around them.</p>
   
   <br><div class="small">Contact</div><a class="link" href="mailto:info@idillustrates.com">info@idillustrates.com →</a></div></div></section>
 
@@ -162,4 +199,24 @@ function go(n){i=(n+slides.length)%slides.length;track.style.transform=`translat
 document.querySelector('.carousel-prev').addEventListener('click',()=>go(i-1));
 document.querySelector('.carousel-next').addEventListener('click',()=>go(i+1));
 </script>
-<script>(()=>{const b=document.querySelector('.menu'),h=document.querySelector('header');if(!b||!h)return;b.addEventListener('click',()=>{const open=h.classList.toggle('open');b.textContent=open?'Close':'Menu';b.setAttribute('aria-expanded',String(open))})})();</script></body></html>
+<script>
+document.querySelectorAll('.media-carousel').forEach(carousel=>{
+  const track=carousel.querySelector('.media-carousel-track'), slides=[...carousel.querySelectorAll('.media-carousel-slide')], count=carousel.querySelector('.media-count');
+  let index=0, timer;
+  const go=n=>{index=(n+slides.length)%slides.length;track.style.transform=`translateX(-${index*100}%)`;count.textContent=String(index+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0')};
+  carousel.querySelector('.media-prev').addEventListener('click',()=>{go(index-1);restart()});
+  carousel.querySelector('.media-next').addEventListener('click',()=>{go(index+1);restart()});
+  const delay=Number(carousel.dataset.autoplay||0); const restart=()=>{if(!delay)return;clearInterval(timer);timer=setInterval(()=>go(index+1),delay)};
+  restart();
+});
+</script>
+<script>
+function addSwipe(target,onPrev,onNext){
+  let startX=0,startY=0,tracking=false;
+  target.addEventListener('touchstart',e=>{const t=e.touches[0];startX=t.clientX;startY=t.clientY;tracking=true},{passive:true});
+  target.addEventListener('touchend',e=>{if(!tracking)return;tracking=false;const t=e.changedTouches[0],dx=t.clientX-startX,dy=t.clientY-startY;if(Math.abs(dx)>48&&Math.abs(dx)>Math.abs(dy)*1.15){dx<0?onNext():onPrev()}},{passive:true});
+}
+const brandViewport=document.querySelector('.project-carousel .carousel-viewport');
+if(brandViewport)addSwipe(brandViewport,()=>go(i-1),()=>go(i+1));
+document.querySelectorAll('.media-carousel').forEach(c=>{if(c._swipeBound)return;c._swipeBound=true;const prev=c.querySelector('.media-prev'),next=c.querySelector('.media-next');addSwipe(c,()=>prev.click(),()=>next.click())});
+</script><script>(()=>{const b=document.querySelector('.menu'),h=document.querySelector('header');if(!b||!h)return;b.addEventListener('click',()=>{const open=h.classList.toggle('open');b.textContent=open?'Close':'Menu';b.setAttribute('aria-expanded',String(open))})})();</script></body></html>
