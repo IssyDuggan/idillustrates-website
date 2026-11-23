@@ -206,10 +206,14 @@ header .menu{color:var(--ink)!important}
 @media(max-width:420px){
   .section-head h2{font-size:clamp(28px,8.8vw,38px)!important;letter-spacing:-.06em}
 }
+/* Header navigation without a visible logo */
+header .nav{margin-left:auto}
+/* Keep navigation in its original right-hand position without the logo */
+@media(max-width:800px){header .menu{margin-left:auto;order:2!important}header.open .nav{order:3;width:100%}}
 </style>
 </head>
 <body>
-<header><a class="id-home" href="index.html" aria-label="ID Illustrates home"><img src="assets/logos/ID-logo.png" alt="ID Illustrates logo"></a><button class="menu" type="button" aria-expanded="false">Menu</button><nav class="nav"><a href="commissions.html">Commissions</a><a href="#brand-collaborations">Collaborations</a><a href="workshops.html">Workshops</a><a href="https://printclublondon.com/artist/issy-duggan/" target="_blank" rel="noopener">Gallery</a><a href="#contact">About</a><a href="mailto:info@idillustrates.com">Contact</a></nav></header>
+<header><button class="menu" type="button" aria-expanded="false">Menu</button><nav class="nav"><a href="commissions.html">Commissions</a><a href="#brand-collaborations">Collaborations</a><a href="workshops.html">Workshops</a><a href="https://printclublondon.com/artist/issy-duggan/" target="_blank" rel="noopener">Gallery</a><a href="#contact">About</a><a href="mailto:info@idillustrates.com">Contact</a></nav></header>
 <main>
 
   <section class="section" id="brand-collaborations"><div class="wrap"><div class="section-head"><h2>BRAND COLLABORATIONS</h2><div class="right">Selected work / 2024-26</div></div>
