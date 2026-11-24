@@ -218,14 +218,24 @@ header .nav{margin-left:auto}
 #live-print .live-list{margin-top:0}
 .archive-links{margin-top:clamp(16px,2.5vw,30px);margin-bottom:0}
 @media(max-width:720px){.section,#brand-collaborations.section,#commissions.section,#live-print.section,#contact.section{padding-top:26px!important;padding-bottom:26px!important}}
+
+/* Intro layout correction */
+#contact.section{padding-top:clamp(12px,2vw,28px)!important}
+#contact .about{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);column-gap:clamp(24px,5vw,80px);row-gap:22px;align-items:center}
+#contact .about > h2{grid-column:1 / -1;margin:0;font-size:clamp(34px,5.4vw,82px);font-weight:500;letter-spacing:-.05em;line-height:1}
+#contact .about > img{width:100%;height:auto;aspect-ratio:auto;max-height:none;object-fit:contain;min-width:0}
+#contact .about-copy{min-width:0}
+#contact .about-copy p{margin-top:0}
+@media(max-width:800px){#contact .about{grid-template-columns:minmax(0,1fr);row-gap:20px}#contact .about > h2{font-size:clamp(30px,9.2vw,52px)}#contact.section{padding-top:12px!important}}
 </style>
 </head>
 <body>
 <header><button class="menu" type="button" aria-expanded="false">Menu</button><nav class="nav"><a href="commissions.html">Commissions</a><a href="#brand-collaborations">Collaborations</a><a href="workshops.html">Workshops</a><a href="https://printclublondon.com/artist/issy-duggan/" target="_blank" rel="noopener">Gallery</a><a href="#contact">About</a><a href="mailto:info@idillustrates.com">Contact</a></nav></header>
 <main>
-<section class="section" id="contact"><div class="wrap about"><img alt="Issy Duggan, artist and illustrator" src="assets/images/about-issy-new.png"/><div class="about-copy">
-  <p>Issy Duggan is a Bristol-born artist whose work explores place and identity. Alongside her practice, she creates bespoke illustrations and live print experiences for brands and private clients.<br><br>With a background in cartography, she uses printmaking to explore the stories places hold. Inspired by architecture and nature, her playful line work captures intricate facades and meaningful details.<br>
-    <br>She has worked with Hermès, Levi’s and The Ned, creating illustrations and live activations.</p>
+<section class="section" id="contact"><div class="wrap about"><h2>Issy Duggan
+</h2><img alt="Issy Duggan, SoHo, NYC" src="assets/images/nyc-sketch.jpg"/><div class="about-copy">
+  <p>Issy Duggan is a Bristol-born artist whose work explores place and identity. Alongside her practice, she creates bespoke illustrations and live print experiences for brands and private clients.<br><br>With a background in cartography, she uses illustration and printmaking to explore the stories places hold. Inspired by architecture and nature, her playful line work captures intricate facades and meaningful details.<br>
+    <br>She has worked with Hermès, Levi’s and Allpress Espresso, creating commissioned artworks and live print activations for events.</p>
   
   <br><div class="small">Contact</div><a class="link" href="mailto:info@idillustrates.com">info@idillustrates.com →</a></div></div></section>
   <section class="section" id="brand-collaborations"><div class="wrap"><div class="section-head"><div class="right">Selected work / 2024-26</div></div>
